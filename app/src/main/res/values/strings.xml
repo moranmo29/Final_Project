@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Myd</string>
+    <string name="introText">אפליקציה לניהול ושיווק מוצר</string>
+    <string name="introLine2">Product management and marketing application</string>
+    <string name="introLine3">היכנס או צור את החשבון החדש שלך</string>
+    <string name="intro_hint_email">דואר אלקטרוני</string>
+    <string name="intro_hint_password">סיסמא</string>
+    <string name="login_button">כניסה</string>
+    <string name="link_forgot_password">שכחת את הסיסמא? לחץ כאן</string>
+    <string name="intro_register">אין לך חשבון? הירשם עכשיו</string>
+    <string name="register_button">הרשמה</string>
+
+    <string name="reg_text">הרשמה למערכת</string>
+    <string name="create_account">צור חשבון</string>
+    <string name="confirm_hint_password">וודא סיסמא</string>
+    <string name="cancel_reg">ביטול</string>
+
+
+</resources>
