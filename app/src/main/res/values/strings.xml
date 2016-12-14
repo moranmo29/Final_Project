@@ -16,4 +16,8 @@
     <string name="create_account">צור חשבון</string>
     <string name="confirm_hint_password">וודא סיסמא</string>
     <string name="cancel_reg">ביטול</string>
+
+    <!--Menu Activity-->
+    <string name="menu_text">תפריט</string>
+
 </resources>

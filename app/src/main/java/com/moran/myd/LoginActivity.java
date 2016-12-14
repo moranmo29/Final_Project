@@ -31,13 +31,18 @@ public class LoginActivity extends AppCompatActivity {
         log.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //To-Do
+                moveLogin();
             }
         });
     }
 
     public void moveReg() {
         Intent i = new Intent(LoginActivity.this, Registration.class);
+        startActivity(i);
+    }
+
+    public void moveLogin() {
+        Intent i = new Intent(LoginActivity.this, MainMenu.class);
         startActivity(i);
     }
 
