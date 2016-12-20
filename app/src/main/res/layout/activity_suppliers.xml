@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_suppliers"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#FFFFFF"
+    tools:context="com.moran.myd.Suppliers">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:background="#505C76"
+        android:orientation="vertical"
+        android:textAlignment="center" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="64dp"
+        app:srcCompat="@drawable/suppliers" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="19dp"
+        android:padding="15dp"
+        android:text="@string/supplier_title"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="28sp" />
+
+
+    <SearchView
+        android:id="@+id/search"
+        android:layout_width="285dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
+        android:iconifiedByDefault="false"
+        android:queryHint="@string/search_supplier">
+
+        <requestFocus />
+    </SearchView>
+
+    <ImageButton
+        android:id="@+id/btnShowAddSupplier"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="65dp"
+        android:layout_marginLeft="25dp"
+        android:background="@drawable/oval"
+        android:elevation="10dp"
+        android:src="@mipmap/ic_add_24px" />
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="285dp"
+        android:layout_height="240dp"
+        android:layout_above="@+id/btnShowAddSupplier"
+        android:layout_alignLeft="@+id/search"
+        android:layout_alignStart="@+id/search"
+        android:layout_below="@+id/search" />
+
+    <ListView
+        android:id="@+id/listview2"
+        android:layout_width="285dp"
+        android:layout_height="240dp"
+        android:layout_above="@+id/btnShowAddSupplier"
+        android:layout_alignEnd="@+id/btnShowAddSupplier"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/btnShowAddSupplier"
+        android:layout_below="@+id/search"
+        android:layout_marginLeft="17dp"
+        android:layout_marginStart="17dp" />
+
+    <ImageButton
+        android:id="@+id/home_btn"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="13dp"
+        android:layout_marginRight="13dp"
+        android:layout_marginTop="14dp"
+        android:background="#505C76"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/home_circle" />
+
+</RelativeLayout>
