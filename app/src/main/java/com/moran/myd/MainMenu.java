@@ -1,6 +1,7 @@
 package com.moran.myd;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -33,8 +34,12 @@ public class MainMenu extends AppCompatActivity {
                 //go to activity
                 switch (position) {
                     case 0:
+                        Intent i = new Intent(MainMenu.this,Suppliers.class);
+                        startActivity(i);
                         break;
                     case 1:
+                        i = new Intent(MainMenu.this,Costs.class);
+                        startActivity(i);
                         break;
                     case 2:
                         break;
@@ -49,6 +54,8 @@ public class MainMenu extends AppCompatActivity {
                     case 7:
                         break;
                     case 8:
+                        i = new Intent(MainMenu.this, LoginActivity.class);
+                        startActivity(i);
                         break;
                 }
             }

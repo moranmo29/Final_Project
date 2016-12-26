@@ -20,4 +20,58 @@
     <!--Menu Activity-->
     <string name="menu_text">תפריט</string>
 
+    <!--Suppliers Activity-->
+    <string name="supplier_title">ספקים</string>
+    <string name="search_supplier">חפש</string>
+    <string name="new_supplier_title">ספק חדש</string>
+    <string name="sup_name">*שם ספק</string>
+    <string name="sup_role">חברה/תפקיד</string>
+    <string name="sup_address">כתובת</string>
+    <string-array name="typeAddress">
+        <item>בית</item>
+        <item>עבודה</item>
+        <item>אחר</item>
+    </string-array>
+    <string name="sup_email">דואר אלקטרוני</string>
+    <string-array name="typeEmail">
+        <item>אישי</item>
+        <item>עבודה</item>
+        <item>ארגון</item>
+        <item>עיקרי</item>
+        <item>משני</item>
+        <item>אחר</item>
+    </string-array>
+    <string name="sup_phone">*מספר טלפון</string>
+    <string-array name="typePhoneNumber">
+        <item>נייד</item>
+        <item>עבודה</item>
+        <item>בית</item>
+        <item>פקס עבודה</item>
+        <item>פקס ביתי</item>
+        <item>אחר</item>
+    </string-array>
+    <string name="sup_comments">הערות</string>
+    <string name="cancel_btn">ביטול</string>
+    <string name="save_btn">שמירה</string>
+
+    <!--Costs Activity-->
+    <string name="costs_title">עלויות</string>
+
+    <string name="new_costs_title">הוספת עלות</string>
+    <string name="information">information</string>
+    <string name="description_cost">תיאור</string>
+    <string name="costs_price_unit">מחיר עלות יחידה</string>
+    <string name="type_coin">סוג מטבע</string>
+    <string-array name="typeCoinSpinner">
+        <item>שקל</item>
+        <item>דולר</item>
+        <item>יורו</item>
+        <item>אחר</item>
+    </string-array>
+    <string name="quantity_unit">כמות יחידות</string>
+    <string name="plus_counter">+</string>
+    <string name="minus_counter">-</string>
+    <string name="init_zero_value">0</string>
+
+
 </resources>
