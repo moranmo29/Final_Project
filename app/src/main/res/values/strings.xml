@@ -73,5 +73,12 @@
     <string name="minus_counter">-</string>
     <string name="init_zero_value">0</string>
 
+    <!--Orders Activity-->
+    <string name="orders_title">הזמנות</string>
+
+    <string name="new_order_title">הוספת הזמנה</string>
+    <string name="description_order">תיאור הזמנה</string>
+    <string name="order_date">תאריך הכנה</string>
+
 
 </resources>

@@ -22,7 +22,9 @@
         <activity android:name=".Suppliers" />
         <activity android:name=".AddSupplier" />
         <activity android:name=".Costs" />
-        <activity android:name=".AddCosts"></activity>
+        <activity android:name=".AddCosts" />
+        <activity android:name=".Orders" />
+        <activity android:name=".AddOrder"></activity>
     </application>
 
 </manifest>

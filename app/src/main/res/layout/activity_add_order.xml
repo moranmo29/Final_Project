@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_add_order"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context="com.moran.myd.AddOrder">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_centerHorizontal="true"
+        android:background="#505C76"
+        android:orientation="vertical"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/textTitleAddOrder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="19dp"
+        android:padding="15dp"
+        android:text="@string/new_order_title"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="28sp" />
+
+    <ImageButton
+        android:id="@+id/info_btn"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:background="#505C76"
+        android:contentDescription="@string/information"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/infor" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textTitleAddOrder"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+
+        <EditText
+            android:id="@+id/add_order_description"
+            android:layout_width="285dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="35dp"
+            android:ems="10"
+            android:hint="@string/description_order"
+            android:inputType="text"
+            android:maxLines="1"
+            android:textAlignment="center" />
+
+
+        <TextView
+            android:id="@+id/quantityUnit"
+            android:layout_width="98dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="65dp"
+            android:layout_weight="0.08"
+            android:ems="10"
+            android:text="@string/quantity_unit"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button_plus"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:background="@drawable/button_plus_minus"
+                android:text="@string/plus_counter" />
+
+
+            <EditText
+                android:id="@+id/costsQuantity"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:hint="@string/init_zero_value"
+                android:inputType="number"></EditText>
+
+            <Button
+                android:id="@+id/button_minus"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:background="@drawable/button_plus_minus"
+                android:text="@string/minus_counter" />
+
+
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/btn_date"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="70dp"
+            android:background="@drawable/button_plus_minus"
+            android:text="@string/order_date" />
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="500dp">
+
+        <Button
+            android:id="@+id/cancel_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="29dp"
+            android:layout_marginRight="29dp"
+            android:background="@drawable/buttonshape"
+            android:backgroundTint="#DF6022"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:text="@string/cancel_btn"
+            android:textColor="#FFFFFF"
+            tools:ignore="RelativeOverlap" />
+
+        <Button
+            android:id="@+id/save_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="33dp"
+            android:layout_marginStart="33dp"
+            android:background="@drawable/buttonshape"
+            android:backgroundTint="#00B386"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:text="@string/save_btn"
+            android:textColor="#FFFFFF" />
+    </RelativeLayout>
+</RelativeLayout>
