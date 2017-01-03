@@ -1,4 +1,4 @@
-# Final_Project ![Build Status](https://travis-ci.org/avjinder/Final-Project.svg?branch=master)
+# Final_Project ![Build Status](https://travis-ci.org/avjinder/Final_Project.svg?branch=master)
 
 <img src="/screenshots/app_icon.png" height="150px"/> <br>
 Product management and marketing application
