@@ -54,6 +54,8 @@ public class MainMenu extends AppCompatActivity {
                         startActivity(i);
                         break;
                     case 5:
+                        i = new Intent(MainMenu.this,Barcode.class);
+                        startActivity(i);
                         break;
                     case 6:
                         break;

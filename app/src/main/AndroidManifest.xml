@@ -28,7 +28,9 @@
         <activity android:name=".Shops" />
         <activity android:name=".AddShop" />
         <activity android:name=".ToDo" />
-        <activity android:name=".AddToDo"></activity>
+        <activity android:name=".AddToDo" />
+        <activity android:name=".Barcode" />
+        <activity android:name=".AddBarcode"></activity>
     </application>
 
 </manifest>

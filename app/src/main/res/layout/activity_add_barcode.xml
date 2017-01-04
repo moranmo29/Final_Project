@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_add_barcode"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context="com.moran.myd.AddBarcode">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_centerHorizontal="true"
+        android:background="#505C76"
+        android:orientation="vertical"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/textAddBarcode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="19dp"
+        android:padding="15dp"
+        android:text="@string/new_barcode_title"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="26sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textAddBarcode"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <TextView
+            android:id="@+id/add_barcode_number_title"
+            android:layout_width="193dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:layout_weight="0.03"
+            android:drawablePadding="10dp"
+            android:drawableRight="@drawable/barcode_icon"
+            android:ems="10"
+            android:text="@string/barcode_number"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/add_barcode_number"
+            android:layout_width="285dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:ems="10"
+            android:inputType="number"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/add_product_name_title"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:drawablePadding="10dp"
+            android:drawableRight="@drawable/package_product"
+            android:ems="10"
+            android:text="@string/bracode_product_name"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/et_product_name"
+            android:layout_width="285dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            android:maxLines="1"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/add_tv_country"
+            android:layout_width="99dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:drawablePadding="10dp"
+            android:drawableRight="@drawable/locate_country"
+            android:ems="10"
+            android:text="@string/barcode_country"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/et_country"
+            android:layout_width="285dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0.10"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:maxLines="1"
+            android:textAlignment="center" />
+
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/info_btn"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:background="#505C76"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/infor" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="500dp">
+
+        <Button
+            android:id="@+id/cancel_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="29dp"
+            android:layout_marginRight="29dp"
+            android:background="@drawable/buttonshape"
+            android:backgroundTint="#DF6022"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:text="@string/cancel_btn"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/save_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="33dp"
+            android:layout_marginStart="33dp"
+            android:background="@drawable/buttonshape"
+            android:backgroundTint="#00B386"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:text="@string/save_btn"
+            android:textColor="#FFFFFF" />
+    </RelativeLayout>
+
+</RelativeLayout>

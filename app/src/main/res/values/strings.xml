@@ -99,5 +99,13 @@
 
     <string name="todo_done">Done</string>
 
+    <!--Barcode Activity-->
+    <string name="barcode_title">ברקוד</string>
+
+    <string name="new_barcode_title">הקצאת מספר ברקוד</string>
+    <string name="barcode_number">ערוך מספר ברקוד</string>
+    <string name="bracode_product_name">שם המוצר</string>
+    <string name="barcode_country">מדינה</string>
+
 
 </resources>
