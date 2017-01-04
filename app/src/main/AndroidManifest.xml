@@ -26,7 +26,9 @@
         <activity android:name=".Orders" />
         <activity android:name=".AddOrder" />
         <activity android:name=".Shops" />
-        <activity android:name=".AddShop"></activity>
+        <activity android:name=".AddShop" />
+        <activity android:name=".ToDo" />
+        <activity android:name=".AddToDo"></activity>
     </application>
 
 </manifest>

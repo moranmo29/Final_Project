@@ -91,4 +91,13 @@
     <string name="shop_email">דואר אלקטרוני</string>
     <string name="quantity_sold_shop">כמות נמכרת</string>
 
+    <!--To-Do Activity-->
+    <string name="to_do_title">טיפולים</string>
+
+    <string name="new_task_title">הוספת משימה</string>
+    <string name="to_do_task">מה ברצונך לעשות?</string>
+
+    <string name="todo_done">Done</string>
+
+
 </resources>

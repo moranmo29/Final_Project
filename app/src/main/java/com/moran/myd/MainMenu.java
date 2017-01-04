@@ -50,6 +50,8 @@ public class MainMenu extends AppCompatActivity {
                         startActivity(i);
                         break;
                     case 4:
+                        i = new Intent(MainMenu.this,ToDo.class);
+                        startActivity(i);
                         break;
                     case 5:
                         break;
