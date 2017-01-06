@@ -33,7 +33,9 @@
         <activity android:name=".AddBarcode" />
         <activity android:name=".Price" />
         <activity android:name=".AddPrice" />
-        <activity android:name=".AddPriceCheck"></activity>
+        <activity android:name=".AddPriceCheck" />
+        <activity android:name=".Status" />
+        <activity android:name=".AddEditStatus"></activity>
     </application>
 
 </manifest>

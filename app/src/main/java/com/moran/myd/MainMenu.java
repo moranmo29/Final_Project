@@ -62,6 +62,8 @@ public class MainMenu extends AppCompatActivity {
                         startActivity(i);
                         break;
                     case 7:
+                        i = new Intent(MainMenu.this,Status.class);
+                        startActivity(i);
                         break;
                     case 8:
                         i = new Intent(MainMenu.this, LoginActivity.class);

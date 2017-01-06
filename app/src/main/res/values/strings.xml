@@ -130,5 +130,12 @@
     <string name="return_btn">חזור</string>
     <string name="check_btn">בדוק</string>
 
+    <!--Status Activity-->
+    <string name="status_title">מצב מלאי</string>
+
+    <string name="edit_status_title">עריכת מלאי</string>
+    <string name="barcode_number_product">מספר ברקוד</string>
+    <string name="aviable_quantity_unit">כמות זמינה</string>
+
 
 </resources>
