@@ -107,5 +107,28 @@
     <string name="bracode_product_name">שם המוצר</string>
     <string name="barcode_country">מדינה</string>
 
+    <!--Price Activity-->
+    <string name="price_title">מחירון</string>
+
+    <string name="add_price_title">עריכת מחירון</string>
+    <string name="price_product_name">שם המוצר</string>
+    <string name="price_for_unit">מחיר ליחידה</string>
+    <string name="price_type_coin">סוג מטבע</string>
+    <string-array name="priceTypeCoinSpinner">
+        <item>שקל</item>
+        <item>דולר</item>
+        <item>יורו</item>
+        <item>אחר</item>
+    </string-array>
+    <string name="min_quantity_unit">כמות מינימלית</string>
+    <string name="price_comments">הערות</string>
+
+    <string name="add_price_check_title">בדיקת רווח</string>
+    <string name="price_total_cost_product">עלות כוללת לייצור יחידה</string>
+    <string name="price_for_unit_customer">מחיר ליחידה לצרכן</string>
+    <string name="sold_quantity_unit">כמות רכישה</string>
+    <string name="return_btn">חזור</string>
+    <string name="check_btn">בדוק</string>
+
 
 </resources>

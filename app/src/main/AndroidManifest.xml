@@ -30,7 +30,10 @@
         <activity android:name=".ToDo" />
         <activity android:name=".AddToDo" />
         <activity android:name=".Barcode" />
-        <activity android:name=".AddBarcode"></activity>
+        <activity android:name=".AddBarcode" />
+        <activity android:name=".Price" />
+        <activity android:name=".AddPrice" />
+        <activity android:name=".AddPriceCheck"></activity>
     </application>
 
 </manifest>

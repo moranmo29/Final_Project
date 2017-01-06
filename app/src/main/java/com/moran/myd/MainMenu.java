@@ -58,6 +58,8 @@ public class MainMenu extends AppCompatActivity {
                         startActivity(i);
                         break;
                     case 6:
+                        i = new Intent(MainMenu.this,Price.class);
+                        startActivity(i);
                         break;
                     case 7:
                         break;

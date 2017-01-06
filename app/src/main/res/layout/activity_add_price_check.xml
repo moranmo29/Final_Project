@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_add_price_check"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context="com.moran.myd.AddPriceCheck">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_centerHorizontal="true"
+        android:background="#505C76"
+        android:orientation="vertical"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/addPriceCheckText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="19dp"
+        android:padding="15dp"
+        android:text="@string/add_price_check_title"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="28sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/addPriceCheckText"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+
+        <EditText
+            android:id="@+id/add_total_cost_product"
+            android:layout_width="285dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0.10"
+            android:ems="10"
+            android:hint="@string/price_total_cost_product"
+            android:inputType="numberDecimal"
+            android:maxLines="1" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <EditText
+                android:id="@+id/addPriceCostToCustomer"
+                android:layout_width="205dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="40dp"
+                android:ems="10"
+                android:hint="@string/price_for_unit_customer"
+                android:inputType="numberDecimal" />
+
+            <Spinner
+                android:id="@+id/price_unit_spinner"
+                android:layout_width="85dp"
+                android:layout_height="31dp"
+                android:layout_gravity="center"
+                android:background="@drawable/gradient_spinner"
+                android:textAlignment="center" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/TakeQuantityUnit"
+            android:layout_width="97dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:ems="10"
+            android:text="@string/sold_quantity_unit"
+            android:textSize="16sp" />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button_plus"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:background="@drawable/button_plus_minus"
+                android:text="@string/plus_counter" />
+
+
+            <EditText
+                android:id="@+id/priceMinimumQuantity"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:hint="@string/init_zero_value"
+                android:inputType="number"></EditText>
+
+            <Button
+                android:id="@+id/button_minus"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:background="@drawable/button_plus_minus"
+                android:text="@string/minus_counter" />
+
+
+        </LinearLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0.37">
+
+            <Button
+                android:id="@+id/add_price_check_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/buttonshape"
+                android:backgroundTint="#FFFFFF"
+                android:paddingLeft="50dp"
+                android:paddingRight="50dp"
+                android:text="@string/check_btn"
+                android:textColor="#000000" />
+
+            <EditText
+                android:id="@+id/priceComments"
+                android:layout_width="285dp"
+                android:layout_height="100dp"
+                android:layout_below="@+id/add_price_check_btn"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="22dp"
+                android:layout_weight="0.11"
+                android:background="@drawable/rounded_border_edittext"
+                android:hint="@string/price_comments"
+                android:padding="15dp" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/information_btn"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:background="#505C76"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/infor" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="500dp">
+
+        <Button
+            android:id="@+id/back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/buttonshape"
+            android:backgroundTint="#00B386"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:text="@string/return_btn"
+            android:textColor="#FFFFFF" />
+    </RelativeLayout>
+
+</RelativeLayout>
