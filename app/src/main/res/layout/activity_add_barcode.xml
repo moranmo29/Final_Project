@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_centerHorizontal="true"
-        android:background="#505C76"
+        android:background="@color/colorGray"
         android:orientation="vertical"
         android:textAlignment="center" />
 
@@ -113,15 +113,15 @@
 
     <ImageButton
         android:id="@+id/info_btn"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="@dimen/inf_icon"
+        android:layout_height="@dimen/inf_icon"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="12dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="12dp"
-        android:background="#505C76"
+        android:background="@color/colorGray"
         android:scaleType="fitXY"
         app:srcCompat="@drawable/infor" />
 
@@ -136,14 +136,14 @@
         <Button
             android:id="@+id/cancel_btn"
             android:layout_width="wrap_content"
-            android:layout_height="45dp"
+            android:layout_height="@dimen/height_btn"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
             android:layout_marginEnd="29dp"
             android:layout_marginRight="29dp"
             android:background="@drawable/buttonshape"
-            android:backgroundTint="#DF6022"
+            android:backgroundTint="@color/colorRed"
             android:paddingLeft="50dp"
             android:paddingRight="50dp"
             android:text="@string/cancel_btn"
@@ -152,14 +152,14 @@
         <Button
             android:id="@+id/save_btn"
             android:layout_width="wrap_content"
-            android:layout_height="45dp"
+            android:layout_height="@dimen/height_btn"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginLeft="33dp"
             android:layout_marginStart="33dp"
             android:background="@drawable/buttonshape"
-            android:backgroundTint="#00B386"
+            android:backgroundTint="@color/colorGreen"
             android:paddingLeft="50dp"
             android:paddingRight="50dp"
             android:text="@string/save_btn"

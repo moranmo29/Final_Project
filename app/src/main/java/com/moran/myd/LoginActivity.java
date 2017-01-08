@@ -36,15 +36,14 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    public void moveReg() {
+    private void moveReg() {
         Intent i = new Intent(LoginActivity.this, Registration.class);
         startActivity(i);
     }
 
-    public void moveLogin() {
+    private void moveLogin() {
         Intent i = new Intent(LoginActivity.this, MainMenu.class);
         startActivity(i);
     }
-
 
 }

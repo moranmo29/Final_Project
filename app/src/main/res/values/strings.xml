@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Myd</string>
-    <!--Login Activity-->
+    <!--Login Activity -->
     <string name="introText">אפליקציה לניהול ושיווק מוצר</string>
     <string name="introLine2">Product management and marketing application</string>
     <string name="introLine3">היכנס או צור את החשבון החדש שלך</string>
@@ -19,6 +19,64 @@
 
     <!--Menu Activity-->
     <string name="menu_text">תפריט</string>
+    <string name="action_setting">הגדרות</string>
+    <string name="action_about">אודות</string>
+    <string name="action_logoff">יציאה</string>
+
+    <!--Setting Activity-->
+    <string name="new_setting_title">הגדרות</string>
+    <!--I put-->
+    <string name="action_sign_in_short">Register</string>
+    <string name="email">Email</string>
+    <string name="minimum_password">Password too short, enter minimum 6 characters!</string>
+    <string name="auth_failed">Authentication failed, check your email and password or sign up</string>
+    <string name="change_email">Change Email</string>
+    <string name="change_password">Change Password</string>
+    <string name="send_password_reset_email">Send Password reset email</string>
+    <string name="remove_user">Remove user</string>
+    <string name="new_pass">New Password</string>
+    <string name="title_activity_profile">Firebase</string>
+    <string name="title_activity_login">Sign in</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_name">Fullname</string>
+    <string name="btn_login">LOGIN</string>
+    <string name="btn_link_to_register">Not a member? Get registered in Firebase now!</string>
+    <string name="btn_link_to_login">Already registered. Login Me!</string>
+    <string name="title_activity_reset_password">ResetPasswordActivity</string>
+    <string name="btn_forgot_password">Forgot your password?</string>
+    <string name="btn_reset_password">Reset Password</string>
+    <string name="btn_back"><![CDATA[<< Back]]></string>
+    <string name="hint_new_email">New Email</string>
+    <string name="btn_change">Change</string>
+    <string name="btn_send">Send</string>
+    <string name="btn_remove">Remove</string>
+    <string name="btn_sign_out">Sign Out</string>
+    <string name="lbl_forgot_password">Forgot password?</string>
+    <string name="forgot_password_msg">We just need your registered Email Id to sent you password reset instructions.</string>
+
+    <!--About Activity-->
+    <string name="about_title">אודות | אפליקציה לניהול ושיווק מוצר</string>
+    <string name="about_text">אפליקציה זו מיועדת עבור אנשים אשר פיתחו מוצר
+        וזקוקים לכלי עזר כדי לנהל את ייצורו בכמויות מסחריות.
+        באפליקציה זו ניתן לנווט בין מספר אפשרויות ממסך התפריט:\n
+        <b>ספקים -\n</b>
+        ניהול רשימת הספקים מולם יש לעבוד\n
+        <b>עלויות -\n</b>
+        ניהול רשימת עלות כל חלק ממנו בנוי המוצר\n
+        <b>הזמנות -\n</b>
+        ניהול רשימת ההזמנות ומעקב אחר הגעתן\n
+        <b>חנויות משווקות -\n</b>
+        ניהול רשימת החנויות בהן משווק המוצר\n
+        <b>טיפולים -\n</b>
+        ניהול ומעקב אחר משימות שיש לבצע\n
+<b>ברקוד -\n</b>
+        ניהול רשימת מספרי ברקוד המוקצים למוצר\n
+        <b>מחירון -\n</b>
+        ניהול מחיר מחירון לצרכן ובדיקת עלות-רווח\n
+        <b>מצב מלאי -\n</b>
+         מעקב אחר כמות המלאי הזמינה של המוצר
+    </string>
 
     <!--Suppliers Activity-->
     <string name="supplier_title">ספקים</string>
@@ -136,6 +194,5 @@
     <string name="edit_status_title">עריכת מלאי</string>
     <string name="barcode_number_product">מספר ברקוד</string>
     <string name="aviable_quantity_unit">כמות זמינה</string>
-
 
 </resources>

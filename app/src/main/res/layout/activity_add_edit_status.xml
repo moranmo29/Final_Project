@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_centerHorizontal="true"
-        android:background="#505C76"
+        android:background="@color/colorGray"
         android:orientation="vertical"
         android:textAlignment="center" />
 
@@ -31,15 +31,15 @@
 
     <ImageButton
         android:id="@+id/info_btn"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="@dimen/inf_icon"
+        android:layout_height="@dimen/inf_icon"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="12dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="12dp"
-        android:background="#505C76"
+        android:background="@color/colorGray"
         android:scaleType="fitXY"
         app:srcCompat="@drawable/infor" />
 
@@ -54,14 +54,14 @@
         <Button
             android:id="@+id/cancel_btn"
             android:layout_width="wrap_content"
-            android:layout_height="45dp"
+            android:layout_height="@dimen/height_btn"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
             android:layout_marginEnd="29dp"
             android:layout_marginRight="29dp"
             android:background="@drawable/buttonshape"
-            android:backgroundTint="#DF6022"
+            android:backgroundTint="@color/colorRed"
             android:paddingLeft="50dp"
             android:paddingRight="50dp"
             android:text="@string/cancel_btn"
@@ -70,14 +70,14 @@
         <Button
             android:id="@+id/save_btn"
             android:layout_width="wrap_content"
-            android:layout_height="45dp"
+            android:layout_height="@dimen/height_btn"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginLeft="33dp"
             android:layout_marginStart="33dp"
             android:background="@drawable/buttonshape"
-            android:backgroundTint="#00B386"
+            android:backgroundTint="@color/colorGreen"
             android:paddingLeft="50dp"
             android:paddingRight="50dp"
             android:text="@string/save_btn"
@@ -94,35 +94,11 @@
         android:weightSum="1">
 
         <TextView
-            android:id="@+id/add_product_name"
-            android:layout_width="133dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:drawablePadding="10dp"
-            android:drawableRight="@drawable/package_product"
-            android:ems="10"
-            android:text="@string/bracode_product_name"
-            android:textSize="18sp" />
-
-        <EditText
-            android:id="@+id/et_product_name"
-            android:layout_width="285dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:drawablePadding="10dp"
-            android:ems="10"
-            android:imeOptions="actionNext"
-            android:inputType="text"
-            android:maxLines="1"
-            android:textAlignment="center" />
-
-        <TextView
             android:id="@+id/barcode_number"
             android:layout_width="156dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="100dp"
             android:drawablePadding="10dp"
             android:drawableRight="@drawable/barcode_icon"
             android:ems="10"
@@ -156,8 +132,8 @@
 
             <Button
                 android:id="@+id/button_plus"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
+                android:layout_width="@dimen/circle_size_small"
+                android:layout_height="@dimen/circle_size_small"
                 android:background="@drawable/button_plus_minus"
                 android:text="@string/plus_counter" />
 
@@ -172,10 +148,11 @@
 
             <Button
                 android:id="@+id/button_minus"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
+                android:layout_width="@dimen/circle_size_small"
+                android:layout_height="@dimen/circle_size_small"
                 android:background="@drawable/button_plus_minus"
                 android:text="@string/minus_counter" />
+
 
         </LinearLayout>
 

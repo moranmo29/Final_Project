@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_centerHorizontal="true"
-        android:background="#505C76"
+        android:background="@color/colorGray"
         android:orientation="vertical"
         android:textAlignment="center" />
 
@@ -86,7 +86,6 @@
 
         </LinearLayout>
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -134,10 +133,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/gradient_spinner"
                 android:textAlignment="center" />
-
-
         </LinearLayout>
-
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -147,8 +143,8 @@
 
             <EditText
                 android:id="@+id/supComments"
-                android:layout_width="285dp"
-                android:layout_height="100dp"
+                android:layout_width="@dimen/wframe"
+                android:layout_height="@dimen/hframe"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:layout_gravity="center"
@@ -160,20 +156,19 @@
                 android:inputType="text"
                 android:padding="15dp" />
         </RelativeLayout>
-
     </LinearLayout>
 
     <ImageButton
         android:id="@+id/home_btn"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="@dimen/inf_icon"
+        android:layout_height="@dimen/inf_icon"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="12dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="12dp"
-        android:background="#505C76"
+        android:background="@color/colorGray"
         android:scaleType="fitXY"
         app:srcCompat="@drawable/infor" />
 
@@ -188,7 +183,7 @@
         <Button
             android:id="@+id/cancel_btn"
             android:layout_width="wrap_content"
-            android:layout_height="45dp"
+            android:layout_height="@dimen/height_btn"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
@@ -204,7 +199,7 @@
         <Button
             android:id="@+id/save_btn"
             android:layout_width="wrap_content"
-            android:layout_height="45dp"
+            android:layout_height="@dimen/height_btn"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
@@ -217,5 +212,4 @@
             android:text="@string/save_btn"
             android:textColor="#FFFFFF" />
     </RelativeLayout>
-
 </RelativeLayout>

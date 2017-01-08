@@ -2,4 +2,21 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <!--Setting Activity-->
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="logo_w_h">100dp</dimen>
+
+    <!--Activities-->
+    <dimen name="inf_icon">35dp</dimen>
+    <dimen name="height_btn">45dp</dimen>
+    <dimen name="spinner_frame">92dp</dimen>
+    <dimen name="circle_size">65dp</dimen>
+    <dimen name="circle_size_small">45dp</dimen>
+    <dimen name="date_frame">180dp</dimen>
+    <dimen name="wframe">285dp</dimen>
+    <dimen name="hframe">100dp</dimen>
+    <dimen name="h_btn">40dp</dimen>
+    <dimen name="add_size">75dp</dimen>
+    <dimen name="icon_menu">88dp</dimen>
+    <dimen name="home_size">60dp</dimen>
 </resources>

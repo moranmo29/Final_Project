@@ -4,20 +4,12 @@
     android:id="@+id/activity_registration"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#505C76"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/colorGray"
     tools:context="com.moran.myd.Registration">
-
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
         android:orientation="vertical"
         android:weightSum="1">
 
@@ -25,8 +17,7 @@
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.23"
-            android:padding="40dp"
+            android:layout_marginTop="78dp"
             android:text="@string/reg_text"
             android:textAlignment="center"
             android:textColor="@android:color/white"
@@ -35,10 +26,11 @@
 
         <EditText
             android:id="@+id/reg_email"
-            android:layout_width="285dp"
+            android:layout_width="@dimen/wframe"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginBottom="10dp"
+            android:layout_marginTop="60dp"
             android:background="#FFFFFF"
             android:drawablePadding="5dp"
             android:drawableRight="@drawable/mail"
@@ -51,7 +43,7 @@
 
         <EditText
             android:id="@+id/reg_password"
-            android:layout_width="285dp"
+            android:layout_width="@dimen/wframe"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginBottom="10dp"
@@ -66,7 +58,7 @@
 
         <EditText
             android:id="@+id/confirm_password"
-            android:layout_width="285dp"
+            android:layout_width="@dimen/wframe"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginBottom="40dp"
@@ -81,8 +73,8 @@
 
         <Button
             android:id="@+id/reg_btn"
-            android:layout_width="285dp"
-            android:layout_height="40dp"
+            android:layout_width="@dimen/wframe"
+            android:layout_height="@dimen/h_btn"
             android:layout_gravity="center"
             android:layout_marginBottom="15dp"
             android:background="@drawable/buttonshape"
@@ -93,15 +85,14 @@
 
         <Button
             android:id="@+id/cancel_btn"
-            android:layout_width="285dp"
-            android:layout_height="40dp"
+            android:layout_width="@dimen/wframe"
+            android:layout_height="@dimen/h_btn"
             android:layout_gravity="center"
             android:background="@drawable/buttonshape"
             android:backgroundTint="#FFFFFF"
             android:text="@string/cancel_reg"
             android:textColor="#000000"
             android:textSize="16sp" />
-
 
     </LinearLayout>
 </RelativeLayout>

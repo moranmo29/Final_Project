@@ -8,10 +8,10 @@ import android.widget.Button;
 
 public class Registration extends AppCompatActivity {
 
+    Button cancel_reg;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        Button cancel_reg;
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
@@ -27,7 +27,7 @@ public class Registration extends AppCompatActivity {
 
     }
 
-    public void moveFirstScreen() {
+    private void moveFirstScreen() {
         Intent i = new Intent(Registration.this, LoginActivity.class);
         startActivity(i);
     }

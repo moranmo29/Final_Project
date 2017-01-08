@@ -4,12 +4,15 @@
 
     <application
         android:allowBackup="true"
+        android:hardwareAccelerated="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:supportsRtl="true"
         android:theme="@style/AppThemeNoBar">
         <activity
             android:name=".LoginActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppThemeNoBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,25 +20,74 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Registration" />
-        <activity android:name=".MainMenu" />
-        <activity android:name=".Suppliers" />
-        <activity android:name=".AddSupplier" />
-        <activity android:name=".Costs" />
-        <activity android:name=".AddCosts" />
-        <activity android:name=".Orders" />
-        <activity android:name=".AddOrder" />
-        <activity android:name=".Shops" />
-        <activity android:name=".AddShop" />
-        <activity android:name=".ToDo" />
-        <activity android:name=".AddToDo" />
-        <activity android:name=".Barcode" />
-        <activity android:name=".AddBarcode" />
-        <activity android:name=".Price" />
-        <activity android:name=".AddPrice" />
-        <activity android:name=".AddPriceCheck" />
-        <activity android:name=".Status" />
-        <activity android:name=".AddEditStatus"></activity>
+        <activity
+            android:name=".Registration"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainMenu"
+            android:label=""
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"  />
+        <activity
+            android:name=".Suppliers"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".AddSupplier"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Costs"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AddCosts"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Orders"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AddOrder"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Shops"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AddShop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ToDo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AddToDo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Barcode"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AddBarcode"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Price"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AddPrice"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AddPriceCheck"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Status"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AddEditStatus"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Setting"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".About"
+            android:label="@string/about_title"
+            android:screenOrientation="portrait"
+            android:theme="@style/AlertDialogCustom"></activity>
     </application>
 
 </manifest>

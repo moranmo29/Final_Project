@@ -4,6 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
@@ -34,35 +37,35 @@ public class MainMenu extends AppCompatActivity {
                 //go to activity
                 switch (position) {
                     case 0:
-                        Intent i = new Intent(MainMenu.this,Suppliers.class);
+                        Intent i = new Intent(MainMenu.this, Suppliers.class);
                         startActivity(i);
                         break;
                     case 1:
-                        i = new Intent(MainMenu.this,Costs.class);
+                        i = new Intent(MainMenu.this, Costs.class);
                         startActivity(i);
                         break;
                     case 2:
-                        i = new Intent(MainMenu.this,Orders.class);
+                        i = new Intent(MainMenu.this, Orders.class);
                         startActivity(i);
                         break;
                     case 3:
-                        i = new Intent(MainMenu.this,Shops.class);
+                        i = new Intent(MainMenu.this, Shops.class);
                         startActivity(i);
                         break;
                     case 4:
-                        i = new Intent(MainMenu.this,ToDo.class);
+                        i = new Intent(MainMenu.this, ToDo.class);
                         startActivity(i);
                         break;
                     case 5:
-                        i = new Intent(MainMenu.this,Barcode.class);
+                        i = new Intent(MainMenu.this, Barcode.class);
                         startActivity(i);
                         break;
                     case 6:
-                        i = new Intent(MainMenu.this,Price.class);
+                        i = new Intent(MainMenu.this, Price.class);
                         startActivity(i);
                         break;
                     case 7:
-                        i = new Intent(MainMenu.this,Status.class);
+                        i = new Intent(MainMenu.this, Status.class);
                         startActivity(i);
                         break;
                     case 8:
@@ -73,4 +76,53 @@ public class MainMenu extends AppCompatActivity {
             }
         });
     }
+
+    // Menu bar -
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.activity_main_actions, menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    /**
+     * On selecting action bar icons
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Take appropriate action for each action item click
+        switch (item.getItemId()) {
+            case R.id.action_setting:
+                // Setting clicked
+                moveSetting();
+                return true;
+            case R.id.action_about:
+                // About
+                moveAbout();
+                return true;
+            case R.id.action_exit_app:
+                // log-off clicked
+                //ref.unauth(); //End user session
+                startActivity(new Intent(MainMenu.this, LoginActivity.class)); //Go back to home page
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    /**
+     * Launching new activity
+     */
+    private void moveSetting() {
+        Intent i = new Intent(MainMenu.this, Setting.class);
+        startActivity(i);
+    }
+
+    private void moveAbout() {
+        Intent i = new Intent(this, About.class);
+        startActivity(i);
+    }
+
 }

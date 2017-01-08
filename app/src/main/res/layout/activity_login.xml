@@ -5,7 +5,7 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#505C76"
+    android:background="@color/colorGray"
     tools:context="com.moran.myd.LoginActivity">
 
 
@@ -74,7 +74,7 @@
 
             <EditText
                 android:id="@+id/email"
-                android:layout_width="285dp"
+                android:layout_width="@dimen/wframe"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginBottom="10dp"
@@ -90,7 +90,7 @@
 
             <EditText
                 android:id="@+id/password"
-                android:layout_width="285dp"
+                android:layout_width="@dimen/wframe"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginBottom="10dp"
@@ -105,8 +105,8 @@
 
             <Button
                 android:id="@+id/enter_btn"
-                android:layout_width="285dp"
-                android:layout_height="40dp"
+                android:layout_width="@dimen/wframe"
+                android:layout_height="@dimen/h_btn"
                 android:layout_gravity="center"
                 android:background="@drawable/buttonshape"
                 android:text="@string/login_button"
@@ -146,12 +146,13 @@
 
         <Button
             android:id="@+id/register_btn"
-            android:layout_width="285dp"
-            android:layout_height="40dp"
+            android:layout_width="@dimen/wframe"
+            android:layout_height="@dimen/h_btn"
             android:layout_gravity="center"
             android:background="@drawable/buttonshape"
             android:text="@string/register_button"
             android:textColor="#FFFFFF"
             android:textSize="16sp" />
     </LinearLayout>
+
 </RelativeLayout>
