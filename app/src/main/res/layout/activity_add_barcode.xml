@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    tools:context="com.moran.myd.AddBarcode">
+    tools:context="com.example.user.myd.AddBarcode">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -28,88 +28,6 @@
         android:textAlignment="center"
         android:textColor="@android:color/white"
         android:textSize="26sp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/textAddBarcode"
-        android:orientation="vertical"
-        android:weightSum="1">
-
-        <TextView
-            android:id="@+id/add_barcode_number_title"
-            android:layout_width="193dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="50dp"
-            android:layout_weight="0.03"
-            android:drawablePadding="10dp"
-            android:drawableRight="@drawable/barcode_icon"
-            android:ems="10"
-            android:text="@string/barcode_number"
-            android:textSize="18sp" />
-
-        <EditText
-            android:id="@+id/add_barcode_number"
-            android:layout_width="285dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:ems="10"
-            android:inputType="number"
-            android:textAlignment="center" />
-
-        <TextView
-            android:id="@+id/add_product_name_title"
-            android:layout_width="130dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:drawablePadding="10dp"
-            android:drawableRight="@drawable/package_product"
-            android:ems="10"
-            android:text="@string/bracode_product_name"
-            android:textSize="18sp" />
-
-        <EditText
-            android:id="@+id/et_product_name"
-            android:layout_width="285dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:drawablePadding="10dp"
-            android:ems="10"
-            android:imeOptions="actionNext"
-            android:inputType="text"
-            android:maxLines="1"
-            android:textAlignment="center" />
-
-        <TextView
-            android:id="@+id/add_tv_country"
-            android:layout_width="99dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:drawablePadding="10dp"
-            android:drawableRight="@drawable/locate_country"
-            android:ems="10"
-            android:text="@string/barcode_country"
-            android:textSize="18sp" />
-
-        <EditText
-            android:id="@+id/et_country"
-            android:layout_width="285dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="0.10"
-            android:drawablePadding="10dp"
-            android:ems="10"
-            android:imeOptions="actionDone"
-            android:inputType="text"
-            android:maxLines="1"
-            android:textAlignment="center" />
-
-    </LinearLayout>
 
     <ImageButton
         android:id="@+id/info_btn"
@@ -165,5 +83,84 @@
             android:text="@string/save_btn"
             android:textColor="#FFFFFF" />
     </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:orientation="vertical"
+        android:weightSum="1"
+        android:layout_below="@+id/textAddBarcode"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <ImageButton
+            android:id="@+id/imgScanBarcode"
+            android:layout_width="150dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/scan_barcode_photo" />
+
+        <EditText
+            android:id="@+id/add_barcode_number"
+            android:layout_width="285dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:hint="@string/barcode_number"
+            android:ems="10"
+            android:inputType="number"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/add_product_name_title"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:drawablePadding="10dp"
+            android:drawableRight="@drawable/package_product"
+            android:ems="10"
+            android:text="@string/bracode_product_name"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/et_product_name"
+            android:layout_width="285dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            android:maxLines="1"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/add_tv_country"
+            android:layout_width="99dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:drawablePadding="10dp"
+            android:drawableRight="@drawable/locate_country"
+            android:ems="10"
+            android:text="@string/barcode_country"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/et_country"
+            android:layout_width="285dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0.10"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:maxLines="1"
+            android:textAlignment="center" />
+
+    </LinearLayout>
 
 </RelativeLayout>

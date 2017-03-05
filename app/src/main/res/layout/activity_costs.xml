@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    tools:context="com.moran.myd.Costs">
+    tools:context="com.example.user.myd.Costs">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -61,4 +61,6 @@
         android:background="@color/colorGray"
         android:scaleType="fitXY"
         app:srcCompat="@drawable/home_circle" />
+
+
 </RelativeLayout>

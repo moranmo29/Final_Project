@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    tools:context="com.moran.myd.MainMenu">
+    tools:context="com.example.user.myd.MainMenu">
+
 
     <LinearLayout
         android:id="@+id/linearLayout"

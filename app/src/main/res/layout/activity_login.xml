@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorGray"
-    tools:context="com.moran.myd.LoginActivity">
+    tools:context="com.example.user.myd.LoginActivity">
 
 
     <LinearLayout
@@ -104,7 +104,7 @@
                 android:textColorHint="#717171" />
 
             <Button
-                android:id="@+id/enter_btn"
+                android:id="@+id/btn_login"
                 android:layout_width="@dimen/wframe"
                 android:layout_height="@dimen/h_btn"
                 android:layout_gravity="center"
@@ -113,10 +113,12 @@
                 android:textColor="#FFFFFF"
                 android:textSize="16sp" />
 
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="match_parent"
+            <Button
+                android:id="@+id/btn_reset_password"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
                 android:padding="13dp"
                 android:text="@string/link_forgot_password"
                 android:textAlignment="center"

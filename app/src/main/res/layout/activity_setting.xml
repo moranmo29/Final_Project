@@ -8,7 +8,8 @@
     android:background="#FFFFFF"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context="com.moran.myd.Setting">
+    tools:context="com.example.user.myd.Setting">
+
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -31,48 +32,6 @@
         android:textAlignment="center"
         android:textColor="@android:color/white"
         android:textSize="28sp" />
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="500dp">
-
-        <Button
-            android:id="@+id/cancel_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="45dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginEnd="29dp"
-            android:layout_marginRight="29dp"
-            android:background="@drawable/buttonshape"
-            android:backgroundTint="@color/colorRed"
-            android:paddingLeft="50dp"
-            android:paddingRight="50dp"
-            android:text="@string/cancel_btn"
-            android:textColor="#FFFFFF"
-            tools:ignore="RelativeOverlap" />
-
-        <Button
-            android:id="@+id/save_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="45dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="33dp"
-            android:layout_marginStart="33dp"
-            android:background="@drawable/buttonshape"
-            android:backgroundTint="@color/colorGreen"
-            android:paddingLeft="50dp"
-            android:paddingRight="50dp"
-            android:text="@string/save_btn"
-            android:textColor="#FFFFFF" />
-    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -129,8 +88,9 @@
             style="?android:textAppearanceSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginTop="16dp"
-            android:background="@color/colorPrimaryDark"
+            android:background="@color/colorGreen"
             android:text="@string/btn_change"
             android:textColor="@android:color/white"
             android:textStyle="bold" />
@@ -140,8 +100,9 @@
             style="?android:textAppearanceSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginTop="16dp"
-            android:background="@color/colorPrimaryDark"
+            android:background="@color/colorGreen"
             android:text="@string/btn_change"
             android:textColor="@android:color/white"
             android:textStyle="bold" />
@@ -151,25 +112,21 @@
             style="?android:textAppearanceSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginTop="16dp"
-            android:background="@color/colorPrimaryDark"
+            android:background="@color/colorGreen"
             android:text="@string/btn_send"
             android:textColor="@android:color/white"
             android:textStyle="bold" />
-
-        <ProgressBar
-            android:id="@+id/progressBar"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:visibility="gone" />
 
         <Button
             android:id="@+id/remove"
             style="?android:textAppearanceSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginTop="16dp"
-            android:background="@color/colorPrimaryDark"
+            android:background="@color/colorGreen"
             android:text="@string/btn_remove"
             android:textColor="@android:color/white"
             android:textStyle="bold" />
@@ -179,7 +136,7 @@
             style="?android:textAppearanceSmall"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="20dp"
             android:text="@string/change_email"
             android:textStyle="bold" />
 
@@ -188,7 +145,7 @@
             style="?android:textAppearanceSmall"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="20dp"
             android:text="@string/change_password"
             android:textStyle="bold" />
 
@@ -197,7 +154,7 @@
             style="?android:textAppearanceSmall"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="20dp"
             android:text="@string/send_password_reset_email"
             android:textStyle="bold" />
 
@@ -206,7 +163,7 @@
             style="?android:textAppearanceSmall"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="20dp"
             android:text="@string/remove_user"
             android:textStyle="bold" />
 
@@ -215,11 +172,22 @@
             style="?android:textAppearanceSmall"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:background="@color/colorPrimary"
+            android:layout_marginTop="20dp"
+            android:background="@color/colorRed"
             android:text="@string/btn_sign_out"
             android:textColor="@android:color/white"
             android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/h_btn"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:text="@string/btn_back"
+            android:layout_marginTop="2dp"
+            android:textColor="#000000"
+            android:textSize="16sp" />
 
     </LinearLayout>
 </RelativeLayout>

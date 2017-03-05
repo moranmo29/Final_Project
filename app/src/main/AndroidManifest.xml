@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.moran.myd">
+    package="com.example.user.myd">
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -27,7 +29,7 @@
             android:name=".MainMenu"
             android:label=""
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme"  />
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".Suppliers"
             android:screenOrientation="portrait"
@@ -57,16 +59,16 @@
             android:name=".ToDo"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".AddToDo"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".Barcode"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".AddBarcode"
+            android:name=".Price"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Price"
+            android:name=".Status"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AddBarcode"
             android:screenOrientation="portrait" />
         <activity
             android:name=".AddPrice"
@@ -75,10 +77,10 @@
             android:name=".AddPriceCheck"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Status"
+            android:name=".AddEditStatus"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".AddEditStatus"
+            android:name=".AddToDo"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Setting"
@@ -87,7 +89,14 @@
             android:name=".About"
             android:label="@string/about_title"
             android:screenOrientation="portrait"
-            android:theme="@style/AlertDialogCustom"></activity>
+            android:theme="@style/AlertDialogCustom" />
+        <activity
+            android:name=".ResetPasswordActivity"
+            android:screenOrientation="portrait"></activity><!-- ATTENTION: This was auto-generated to add Google Play services to your project for
+     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
     </application>
 
 </manifest>

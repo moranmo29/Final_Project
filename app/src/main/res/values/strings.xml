@@ -5,39 +5,51 @@
     <string name="introLine2">Product management and marketing application</string>
     <string name="introLine3">היכנס או צור את החשבון החדש שלך</string>
     <string name="intro_hint_email">דואר אלקטרוני</string>
-    <string name="intro_hint_password">סיסמא</string>
+    <string name="intro_hint_password">סיסמא (לפחות 6 תווים)</string>
     <string name="login_button">כניסה</string>
     <string name="link_forgot_password">שכחת את הסיסמא? לחץ כאן</string>
     <string name="intro_register">אין לך חשבון? הירשם עכשיו</string>
     <string name="register_button">הרשמה</string>
 
     <!--Registration Activity-->
-    <string name="reg_text">הרשמה למערכת</string>
+    <string name="reg_text">רישום משתמש חדש</string>
     <string name="create_account">צור חשבון</string>
     <string name="confirm_hint_password">וודא סיסמא</string>
     <string name="cancel_reg">ביטול</string>
+
+    <!--Registration Activity-->
+    <string name="lbl_forgot_password">שכחת את הסיסמא?</string>
+    <string name="forgot_password_msg">אנא הכנס את הדואר האלקטרוני לשם איפוס הסיסמא</string>
+    <string name="btn_reset_password">אפס סיסמא</string>
 
     <!--Menu Activity-->
     <string name="menu_text">תפריט</string>
     <string name="action_setting">הגדרות</string>
     <string name="action_about">אודות</string>
     <string name="action_logoff">יציאה</string>
+    <string name="btn_back"><![CDATA[ חזור]]></string>
 
     <!--Setting Activity-->
     <string name="new_setting_title">הגדרות</string>
+    <string name="change_email">שינוי דואר אלקטרוני</string>
+    <string name="change_password">שינוי סיסמא</string>
+    <string name="send_password_reset_email">שלח בדואר אלקטרוני איפוס סיסמא</string>
+    <string name="remove_user">מחק חשבון זה</string>
+    <string name="btn_sign_out">יציאה מהחשבון</string>
+    <string name="btn_change">שנה</string>
+    <string name="hint_new_email">דואר אלקטרוני</string>
+    <string name="new_pass">סיסמא חדשה</string>
+    <string name="email">דואר אלקטרוני</string>
+    <string name="btn_send">שלח</string>
+    <string name="hint_email">דואר אלקטרוני</string>
+
+
     <!--I put-->
     <string name="action_sign_in_short">Register</string>
-    <string name="email">Email</string>
     <string name="minimum_password">Password too short, enter minimum 6 characters!</string>
     <string name="auth_failed">Authentication failed, check your email and password or sign up</string>
-    <string name="change_email">Change Email</string>
-    <string name="change_password">Change Password</string>
-    <string name="send_password_reset_email">Send Password reset email</string>
-    <string name="remove_user">Remove user</string>
-    <string name="new_pass">New Password</string>
     <string name="title_activity_profile">Firebase</string>
     <string name="title_activity_login">Sign in</string>
-    <string name="hint_email">Email</string>
     <string name="hint_password">Password</string>
     <string name="hint_name">Fullname</string>
     <string name="btn_login">LOGIN</string>
@@ -45,15 +57,7 @@
     <string name="btn_link_to_login">Already registered. Login Me!</string>
     <string name="title_activity_reset_password">ResetPasswordActivity</string>
     <string name="btn_forgot_password">Forgot your password?</string>
-    <string name="btn_reset_password">Reset Password</string>
-    <string name="btn_back"><![CDATA[<< Back]]></string>
-    <string name="hint_new_email">New Email</string>
-    <string name="btn_change">Change</string>
-    <string name="btn_send">Send</string>
     <string name="btn_remove">Remove</string>
-    <string name="btn_sign_out">Sign Out</string>
-    <string name="lbl_forgot_password">Forgot password?</string>
-    <string name="forgot_password_msg">We just need your registered Email Id to sent you password reset instructions.</string>
 
     <!--About Activity-->
     <string name="about_title">אודות | אפליקציה לניהול ושיווק מוצר</string>
@@ -161,7 +165,7 @@
     <string name="barcode_title">ברקוד</string>
 
     <string name="new_barcode_title">הקצאת מספר ברקוד</string>
-    <string name="barcode_number">ערוך מספר ברקוד</string>
+    <string name="barcode_number">סרוק או ערוך מספר ברקוד</string>
     <string name="bracode_product_name">שם המוצר</string>
     <string name="barcode_country">מדינה</string>
 
