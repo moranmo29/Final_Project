@@ -1,48 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:weightSum="100">
 
-    <TextView
-        android:id="@+id/text1"
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="98"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="25"
+            android:text="שם ספק: "
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_role"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="20"
+            android:text="שם חברה: " />
+
+        <TextView
+            android:id="@+id/tv_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="20"
+            android:text="כתובת: " />
+
+        <TextView
+            android:id="@+id/tv_comment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="33"
+            android:text="הערות: " />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textStyle="bold" />
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/text2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textStyle="italic" />
+        <ImageButton
+            android:id="@+id/btn_call"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="14"
+            android:background="@null"
+            android:padding="5dp"
+            android:src="@drawable/icon_call_361" />
 
-    <TextView
-        android:id="@+id/text3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textStyle="italic" />
-
-    <TextView
-        android:id="@+id/text4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textStyle="italic" />
-
-    <TextView
-        android:id="@+id/text5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textStyle="italic" />
-
-    <TextView
-        android:id="@+id/text6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textStyle="italic" />
+        <ImageButton
+            android:id="@+id/btn_mail"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="7.5dp"
+            android:layout_weight="14"
+            android:background="@null"
+            android:padding="5dp"
+            android:src="@drawable/icon_mail_36" />
+    </LinearLayout>
 
     <View
-        android:layout_width="fill_parent"
-        android:layout_height="2dp"
-        android:background="@color/colorAccent" />
+        android:layout_width="1.2dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="7.5dp"
+        android:background="@color/colorGray" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageButton
+            android:id="@+id/btn_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="9dp"
+            android:src="@drawable/icon_edit_24" />
+
+        <ImageButton
+            android:id="@+id/btn_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="9dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/icon_delete_24" />
+    </LinearLayout>
+
 
 </LinearLayout>
+
+
+    <!--
+        <TextView
+            android:id="@+id/text2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="italic" />
+
+        <TextView
+            android:id="@+id/text3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="italic" />
+
+        <TextView
+            android:id="@+id/text4"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="italic" />
+
+        <TextView
+            android:id="@+id/text5"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="italic" />
+
+        <TextView
+            android:id="@+id/text6"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="italic" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:background="@color/colorAccent" /> -->
+

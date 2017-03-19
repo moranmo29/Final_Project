@@ -13,6 +13,8 @@ public class Supplier {
     //Firebase needs a key property
     private String key;
 
+    // Default constructor required for calls to
+    // DataSnapshot.getValue(Supplier.class)
     public Supplier()
     {
         //Needed for serialization

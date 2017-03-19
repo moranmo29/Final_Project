@@ -1,13 +1,10 @@
 package com.example.user.myd;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.WindowManager;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -15,15 +12,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.firebase.client.Firebase;
-import com.firebase.client.FirebaseError;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -34,41 +24,18 @@ public class AddSupplier extends AppCompatActivity implements AdapterView.OnItem
     Spinner phoneSpinner, emailSpinner, addressSpinner;
     Button cancelBtn, saveBtn;
     EditText nameSupplier, companySupplier, addressSupplier, emailSupplier, phoneNumberSup, commentsSupplier;
-
-    //////
-    private DatabaseReference mDatabase;
-    private String mUserId;
-    private FirebaseAuth mFirebaseAuth;
-    private FirebaseUser mFirebaseUser;
-    private List<Supplier> itemSupplier;
-
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    private GoogleApiClient client;
-
+    private String isKeySupplier;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_supplier);
 
-        ////
-        Firebase.setAndroidContext(this);
-        ////
-        // Initialize Firebase Auth and Database Reference
-        mFirebaseAuth = FirebaseAuth.getInstance();
-        mFirebaseUser = mFirebaseAuth.getCurrentUser();
-        mDatabase = FirebaseDatabase.getInstance().getReference();
-        mUserId = mFirebaseUser.getUid();
-        itemSupplier = new ArrayList<Supplier>();
-
+        //init view
         phoneSpinner = (Spinner) findViewById(R.id.phone_spinner);
         emailSpinner = (Spinner) findViewById(R.id.email_spinner);
         addressSpinner = (Spinner) findViewById(R.id.address_spinner);
 
-        //
         nameSupplier = (EditText) findViewById(R.id.sup_add_new_name);
         companySupplier = (EditText) findViewById(R.id.supRole);
         addressSupplier = (EditText) findViewById(R.id.supAddress);
@@ -94,10 +61,33 @@ public class AddSupplier extends AppCompatActivity implements AdapterView.OnItem
         emailSpinner.setOnItemSelectedListener(this);
         addressSpinner.setOnItemSelectedListener(this);
 
+        isKeySupplier = getIntent().getStringExtra("EXTRA_KEY_ID");
+        if (isKeySupplier != null) {
+
+            FirebaseDbHandler.mDatabase.child("users").child(FirebaseDbHandler.mUserId).child("Supplier").child(isKeySupplier).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    Supplier supplier = dataSnapshot.getValue(Supplier.class);
+                    nameSupplier.setText(supplier.getName());
+                    phoneNumberSup.setText(supplier.getPhoneNumber());
+                    addressSupplier.setText(supplier.getAddress());
+                    companySupplier.setText(supplier.getCompany());
+                    emailSupplier.setText(supplier.getEmail());
+                    commentsSupplier.setText(supplier.getComments());
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+        }
+
+
         cancelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                moveToSupplier();
+                moveToSuppliers();
             }
         });
 
@@ -121,11 +111,6 @@ public class AddSupplier extends AppCompatActivity implements AdapterView.OnItem
 
     }
 
-    public void moveToSupplier() {
-        Intent i = new Intent(AddSupplier.this, Suppliers.class);
-        startActivity(i);
-    }
-
     public void saveSupplierInFirebase() {
 
         String name = nameSupplier.getText().toString();
@@ -141,25 +126,21 @@ public class AddSupplier extends AppCompatActivity implements AdapterView.OnItem
             //Creating Supplier object
             final Supplier supplier = new Supplier(name, company, address, email, phone, comments);
 
-            //Creating firebase object
-            Firebase ref = new Firebase("https://myd-product-manageement-app.firebaseio.com/");
 
-            //Adding values
-            supplier.setName(name);
-            supplier.setPhoneNumber(phone);
-            supplier.setCompany(company);
-            supplier.setAddress(address);
-            supplier.setEmail(email);
-            supplier.setComments(comments);
-
-            //Storing values to firebase
-            mDatabase.child("users").child(mUserId).child("Supplier").push().setValue(supplier);
-
-            Intent i = new Intent(this, Suppliers.class);
-            startActivity(i);
-
+            if (isKeySupplier == null) {
+                //Storing values to firebase
+                FirebaseDbHandler.mDatabase.child("users").child(FirebaseDbHandler.mUserId).child("Supplier").push().setValue(supplier);
+            } else {
+                //if user want edit details of supplier - save the data that he change
+                FirebaseDbHandler.mDatabase.child("users").child(FirebaseDbHandler.mUserId).child("Supplier").child(isKeySupplier).setValue(supplier);
+            }
+            moveToSuppliers();
         }
     }
 
+    public void moveToSuppliers() {
+        Intent i = new Intent(AddSupplier.this, Suppliers.class);
+        startActivity(i);
+    }
 
 }
