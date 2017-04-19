@@ -28,13 +28,12 @@ public class AddCosts extends AppCompatActivity implements AdapterView.OnItemSel
 
     Spinner typeCoin;
     Button cancelBtn, saveBtn, btnPlus, btnMinus;
-    EditText descriptionCost, priceUnitCost, quantityUnitsCost,priceTotalCost;
+    EditText descriptionCost, priceUnitCost, quantityUnitsCost, priceTotalCost;
 
     private DatabaseReference mDatabase;
     private String mUserId;
     private FirebaseAuth mFirebaseAuth;
     private FirebaseUser mFirebaseUser;
-    //private List<Cost> itemSupplier;
     private String isKeyCost;
 
     @Override
@@ -42,24 +41,21 @@ public class AddCosts extends AppCompatActivity implements AdapterView.OnItemSel
         super.onCreate(savedInstanceState);
         setContentView(R.layout.acticity_add_costs);
 
-        ////
-        Firebase.setAndroidContext(this);
-        ////
         // Initialize Firebase Auth and Database Reference
         mFirebaseAuth = FirebaseAuth.getInstance();
         mFirebaseUser = mFirebaseAuth.getCurrentUser();
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mUserId = mFirebaseUser.getUid();
 
-        typeCoin = (Spinner)findViewById(R.id.costs_type_coin_spinner);
-        cancelBtn = (Button)findViewById(R.id.cancel_btn);
-        saveBtn = (Button)findViewById(R.id.save_btn);
-        descriptionCost = (EditText)findViewById(R.id.add_costs_description);
-        priceUnitCost = (EditText)findViewById(R.id.costPrice);
-        quantityUnitsCost=(EditText)findViewById(R.id.costsQuantity);
+        typeCoin = (Spinner) findViewById(R.id.costs_type_coin_spinner);
+        cancelBtn = (Button) findViewById(R.id.cancel_btn);
+        saveBtn = (Button) findViewById(R.id.save_btn);
+        descriptionCost = (EditText) findViewById(R.id.add_costs_description);
+        priceUnitCost = (EditText) findViewById(R.id.costPrice);
+        quantityUnitsCost = (EditText) findViewById(R.id.costsQuantity);
 
-        btnPlus = (Button)findViewById(R.id.button_plus);
-        btnMinus = (Button)findViewById(R.id.button_minus);
+        btnPlus = (Button) findViewById(R.id.button_plus);
+        btnMinus = (Button) findViewById(R.id.button_minus);
 
          /*Manage the data - the adapter will put data inside the spinner
         android.R.layout.simple_spinner_item contain a TextView that is repeated to form the List structure  */
@@ -77,8 +73,8 @@ public class AddCosts extends AppCompatActivity implements AdapterView.OnItemSel
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     Cost cost = dataSnapshot.getValue(Cost.class);
                     descriptionCost.setText(cost.getDescription());
-                    priceUnitCost.setText(""+cost.getPriceUnit());
-                    quantityUnitsCost.setText(""+cost.getQuantityUnits());
+                    priceUnitCost.setText("" + cost.getPriceUnit());
+                    quantityUnitsCost.setText("" + cost.getQuantityUnits());
                 }
 
                 @Override
@@ -105,14 +101,14 @@ public class AddCosts extends AppCompatActivity implements AdapterView.OnItemSel
         btnPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               plusQuantityClicked();
+                plusQuantityClicked();
             }
         });
 
         btnMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-              minusQuantityClicked();
+                minusQuantityClicked();
             }
         });
     }
@@ -138,19 +134,16 @@ public class AddCosts extends AppCompatActivity implements AdapterView.OnItemSel
             Toast.makeText(this, "חובה להזין את הפרטים", Toast.LENGTH_SHORT).show();
         } else {
             //Total sum - up to three decimal places
-            double totalSum = Double.parseDouble(String.format("%.2f", priceForUnit*quantity));
+            double totalSum = Double.parseDouble(String.format("%.2f", priceForUnit * quantity));
             //Creating Cost object
-            final Cost cost = new Cost(description,priceForUnit, totalSum,quantity);
+            final Cost cost = new Cost(description, priceForUnit, totalSum, quantity);
             //final Cost cost = new Cost(description,priceForUnit, priceForUnit*quantity,quantity);
 
 
-            if(isKeyCost == null)
-            {
+            if (isKeyCost == null) {
                 //Storing values to firebase
                 mDatabase.child("users").child(mUserId).child("Costs").push().setValue(cost);
-            }
-            else
-            {
+            } else {
                 //if user want edit details of supplier - save the data that he change
                 mDatabase.child("users").child(mUserId).child("Costs").child(isKeyCost).setValue(cost);
             }
@@ -158,26 +151,24 @@ public class AddCosts extends AppCompatActivity implements AdapterView.OnItemSel
         }
     }
 
-    public void moveToCosts(){
+    public void moveToCosts() {
         Intent i = new Intent(AddCosts.this, Costs.class);
         startActivity(i);
     }
 
     //Increases the value by 1 each time a user clicks 'plus button'
-    private void plusQuantityClicked()
-    {
+    private void plusQuantityClicked() {
         String value = quantityUnitsCost.getText().toString();
-        int finalValue = Integer.parseInt(value)+1;
+        int finalValue = Integer.parseInt(value) + 1;
         quantityUnitsCost.setText("" + finalValue);
     }
 
     //Reduce one value from quantityUnits every time user press on 'minus button'
-    private void minusQuantityClicked()
-    {
+    private void minusQuantityClicked() {
         String value = quantityUnitsCost.getText().toString();
-        int finalValue = Integer.parseInt(value)-1;
+        int finalValue = Integer.parseInt(value) - 1;
         //Value must be positive
-        if(finalValue <= 0) {
+        if (finalValue <= 0) {
             finalValue = 0;
             Toast.makeText(getApplicationContext(), "הכמות חייבת להיות למעלה מאפס!", Toast.LENGTH_SHORT).show();
         }

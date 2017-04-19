@@ -137,10 +137,12 @@
 
     <!--Orders Activity-->
     <string name="orders_title">הזמנות</string>
+    <string name="order_quan">0</string>
 
     <string name="new_order_title">הוספת הזמנה</string>
     <string name="description_order">תיאור הזמנה</string>
     <string name="order_date">תאריך הכנה</string>
+    <string name="Set_reminder">קבע תזכורת</string>
 
     <!--Shops Activity-->
     <string name="shops_title">חנויות</string>

@@ -3,7 +3,9 @@
     package="com.example.user.myd">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
+
 
     <application
         android:allowBackup="true"
@@ -93,11 +95,19 @@
             android:theme="@style/AlertDialogCustom" />
         <activity
             android:name=".ResetPasswordActivity"
-            android:screenOrientation="portrait"></activity><!-- ATTENTION: This was auto-generated to add Google Play services to your project for
-     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
+            android:screenOrientation="portrait" />
+        <!--
+ ATTENTION: This was auto-generated to add Google Play services to your project for
+     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
+        -->
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+
+        <activity android:name=".OrderSetAlarm"></activity>
+        <!--Premmission to alarm - for orders-->
+        <receiver android:name=".AlarmReceiver" android:process=":remote" />
+
     </application>
 
 </manifest>
