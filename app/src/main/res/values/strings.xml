@@ -154,6 +154,8 @@
     <string name="shop_phone_number">מספר טלפון</string>
     <string name="shop_email">דואר אלקטרוני</string>
     <string name="quantity_sold_shop">כמות נמכרת</string>
+    <string name="shop_share">שתף</string>
+    <string name="dail_number">חייג למספר</string>
 
     <!--To-Do Activity-->
     <string name="to_do_title">טיפולים</string>

@@ -104,9 +104,13 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <activity android:name=".OrderSetAlarm"></activity>
+        <activity
+            android:name=".OrderSetAlarm"
+            android:screenOrientation="portrait"></activity>
         <!--Premmission to alarm - for orders-->
-        <receiver android:name=".AlarmReceiver" android:process=":remote" />
+        <receiver
+            android:name=".AlarmReceiver"
+            android:process=":remote" />
 
     </application>
 

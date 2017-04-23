@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -55,6 +56,7 @@ public class SupplierArrayAdapter extends ArrayAdapter<Supplier> {
         ImageButton deleteSupplier = (ImageButton) rowView.findViewById(R.id.btn_delete);
         ImageButton callNumber = (ImageButton) rowView.findViewById(R.id.btn_call);
         ImageButton sendMail = (ImageButton) rowView.findViewById(R.id.btn_mail);
+
 
         textNameSupplier.setText(values[position].getName());
         textCompanySupplier.setText("חברה: " + values[position].getCompany());
