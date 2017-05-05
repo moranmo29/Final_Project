@@ -162,6 +162,10 @@
 
     <string name="new_task_title">הוספת משימה</string>
     <string name="to_do_task">מה ברצונך לעשות?</string>
+    <string name="to_do_high">גבוה</string>
+    <string name="to_do_medium">בינוני</string>
+    <string name="to_do_low">נמוך</string>
+    <string name="to_do_finish">טופל</string>
 
     <string name="todo_done">Done</string>
 

@@ -31,6 +31,7 @@ public class ShopArrayAdapter extends ArrayAdapter<Shop> {
     private final Shop[] values;
     private final ArrayAdapter adapter;
 
+
     //Constructor
     public ShopArrayAdapter(Context context, Shop[] values) {
         super(context, R.layout.row_shop_item, values);
@@ -59,11 +60,12 @@ public class ShopArrayAdapter extends ArrayAdapter<Shop> {
         Button dialNumber = (Button)rowView.findViewById(R.id.btnDialing);
         // set the color of the button dial
         dialNumber.setBackgroundColor(ContextCompat.getColor(context, R.color.colorGreen));
-
+        //set background drawable of a view, shape dial number button
+        dialNumber.setBackgroundResource(R.drawable.button_dial_shape);
 
         textNameShop.setText(values[position].getShopName());
         textContactManShop.setText("איש קשר: " + values[position].getContactMan());
-        textAddressShop.setText("כתובת: " + values[position].getShopAddress());
+        textAddressShop.setText("כתובת: " + values[position].getShopAddress()); //.substring(0,3) + "..."
         textEmailShop.setText(values[position].getShopEmail());
         textQuantityShop.setText(values[position].getqSold()+" נמכרו");
         textPhoneShop.setText(values[position].getShopNumberPhone());
