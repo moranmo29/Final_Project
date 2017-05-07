@@ -13,14 +13,16 @@ public class ItemToDo {
 
     private String title;
     private boolean done;
+    private int priority;
     //Firebase needs a key property
     private String key;
 
     // Default constructor required for calls to DataSnapshot.getValue(ItemToDo.class)
     public ItemToDo() {}
 
-    public ItemToDo(String title) {
+    public ItemToDo(String title, int priority) {
         this.title = title;
+        this.priority = priority;
     }
 
     public String getTitle() {
@@ -46,5 +48,13 @@ public class ItemToDo {
 
     public void setKey(String key) {
         this.key = key;
+    }
+
+    public int getPriority() {
+        return priority;
+    }
+
+    public void setPriority(int priority) {
+        this.priority = priority;
     }
 }

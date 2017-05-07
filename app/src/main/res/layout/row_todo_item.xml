@@ -39,7 +39,7 @@
 
             <TextView
                 android:id="@+id/tv_toDoDescription"
-                android:layout_width="180dp"
+                android:layout_width="210dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
@@ -49,15 +49,21 @@
                 android:textSize="18sp" />
         </LinearLayout>
 
-        <Button
-            android:id="@+id/toDoPr"
-            android:layout_width="100dp"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="top"
-            android:background="@null"
-            android:drawableTop="@drawable/icon_high_priority"
-            android:padding="10dp"
-            android:text="עדיפות" />
-    </LinearLayout>
+            android:orientation="vertical">
 
+            <Button
+                android:id="@+id/toDoPr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:layout_marginLeft="3dp"
+                android:layout_gravity="top"
+                android:text="עדיפות"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"/>
+    </LinearLayout>
+</LinearLayout>
 </LinearLayout>

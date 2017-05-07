@@ -32,17 +32,17 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="400dp"
-        android:orientation="vertical"
-        android:weightSum="1"
-        android:layout_below="@+id/textAddTask"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textAddTask"
+        android:orientation="vertical"
+        android:weightSum="1">
 
         <TextView
             android:layout_width="173dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="120dp"
+            android:layout_marginTop="80dp"
             android:ems="10"
             android:text="@string/to_do_task"
             android:textSize="18sp" />
@@ -58,101 +58,116 @@
             android:maxLines="1"
             android:textAlignment="center" />
 
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="55dp"
+            android:layout_marginTop="25dp"
             android:orientation="horizontal">
 
-            <RadioGroup
-                android:id="@+id/radioPriority"
+            <Button
+                android:id="@+id/button_plus"
+                android:layout_width="@dimen/circle_size"
+                android:layout_height="@dimen/circle_size"
+                android:background="@drawable/button_plus_minus"
+                android:text="@string/plus_counter" />
+
+
+            <EditText
+                android:id="@+id/et_todo_pr"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:inputType="number"
+                android:text="1"></EditText>
+
+            <Button
+                android:id="@+id/button_minus"
+                android:layout_width="@dimen/circle_size"
+                android:layout_height="@dimen/circle_size"
+                android:background="@drawable/button_plus_minus"
+                android:text="@string/minus_counter" />
+
+        </LinearLayout>
+        <TextView
+            android:id="@+id/tv_pTodo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:ems="10"
+            android:gravity="center"
+            android:text="@string/todo_proirity"
+            android:textColor="#000000" />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_marginLeft="25dp"
+                android:orientation="vertical">
 
-                <LinearLayout
+                <ImageView
+                    android:id="@+id/iv_high"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="25dp"
-                    android:orientation="vertical">
+                    android:src="@drawable/icon_high_priority" />
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/to_do_high"
+                    android:textAlignment="center"
+                    android:textColor="#000000" />
+            </LinearLayout>
 
-                    <RadioButton
-                        android:id="@+id/rb_high"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:checked="false" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:orientation="vertical">
 
-                    <ImageView
-                        android:id="@+id/iv_high"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/icon_high_priority" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="@string/to_do_high"
-                        android:textAlignment="center"
-                        android:textColor="#000000" />
-                </LinearLayout>
-
-                <LinearLayout
+                <ImageView
+                    android:id="@+id/iv_medium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="25dp"
-                    android:orientation="vertical">
+                    android:src="@drawable/icon_medium_priority" />
 
-                    <RadioButton
-                        android:id="@+id/rab_medium"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:checked="false" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/to_do_medium"
+                    android:textAlignment="center"
+                    android:textColor="#000000" />
+            </LinearLayout>
 
-                    <ImageView
-                        android:id="@+id/iv_medium"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/icon_medium_priority" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="@string/to_do_medium"
-                        android:textAlignment="center"
-                        android:textColor="#000000" />
-                </LinearLayout>
-
-                <LinearLayout
+                <ImageView
+                    android:id="@+id/iv_low"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:gravity="center"
+                    android:src="@drawable/icon_low_priority" />
 
-                    <RadioButton
-                        android:id="@+id/rb_low"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:checked="false" />
-
-                    <ImageView
-                        android:id="@+id/iv_low"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:src="@drawable/icon_low_priority" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="@string/to_do_low"
-                        android:textAlignment="center"
-                        android:textColor="#000000" />
-                </LinearLayout>
-            </RadioGroup>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/to_do_low"
+                    android:textAlignment="center"
+                    android:textColor="#000000" />
+            </LinearLayout>
         </LinearLayout>
 
 
