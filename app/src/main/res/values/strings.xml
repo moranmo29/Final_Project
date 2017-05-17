@@ -177,6 +177,10 @@
     <string name="barcode_number">סרוק או ערוך מספר ברקוד</string>
     <string name="bracode_product_name">שם המוצר</string>
     <string name="barcode_country">מדינה</string>
+    <string name="barcode_num">מספר ברקוד</string>
+    <string name="barcode_invite">להזמין</string>
+    <string name="barcode_status">כמות זמינה</string>
+    <string name="barcode_check">מצב מלאי</string>
 
     <!--Price Activity-->
     <string name="price_title">מחירון</string>

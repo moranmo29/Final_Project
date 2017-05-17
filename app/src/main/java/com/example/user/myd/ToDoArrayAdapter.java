@@ -1,7 +1,6 @@
 package com.example.user.myd;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,12 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.ImageView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 /**
  * Created by User on 23/03/2017.
@@ -46,27 +40,19 @@ public class ToDoArrayAdapter extends ArrayAdapter<ItemToDo> {
         CheckBox deleteToDo = (CheckBox) rowView.findViewById(R.id.checkBoxTodo);
 
         textDescriptionTodo.setText(values[position].getTitle());
-        //textPriorityToDo.setText(""+values[position].getPriority());
-        if(values[position].getPriority() == P_HIGH)
-        {
+
+        if (values[position].getPriority() == P_HIGH) {
             //set background drawable of a view
             toDoPriority.setBackgroundResource(R.drawable.icon_high_priority);
             textPriorityToDo.setText("גבוה");
-        }
-        else if(values[position].getPriority() == P_MEDIUM)
-        {
+        } else if (values[position].getPriority() == P_MEDIUM) {
             toDoPriority.setBackgroundResource(R.drawable.icon_medium_priority);
             textPriorityToDo.setText("בינוני");
-        }
-        else // ==3
+        } else // ==3
         {
             toDoPriority.setBackgroundResource(R.drawable.icon_low_priority);
             textPriorityToDo.setText("נמוך");
         }
-
-        //toDoPriority.setText("כמות: " + values[position].getqUnitsOrder());
-       // deleteToDo.setText("הגעת הזמנה: " + values[position].getDateOrder());
-
 
         //user can delete order from the list
         //set the checkBox to V
@@ -82,7 +68,6 @@ public class ToDoArrayAdapter extends ArrayAdapter<ItemToDo> {
                 }
             }
         });
-
         return rowView;
     }
 
