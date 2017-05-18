@@ -1,6 +1,8 @@
 package com.example.user.myd;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,7 +44,7 @@ public class BarcodeArrayAdapter extends ArrayAdapter<BarcodeNumber> {
         ImageButton editBarcode = (ImageButton) rowView.findViewById(R.id.btn_edit);
         ImageButton deleteBarcode = (ImageButton) rowView.findViewById(R.id.btn_delete);
 
-        textDescriptionBarcode.setText("שם: "+values[position].getBarcodeDesc());
+        textDescriptionBarcode.setText("שם: " + values[position].getBarcodeDesc());
         textNumberBarcode.setText("מספר ברקוד: " + values[position].getBarcodeNum());
         textStatus.setText("" + values[position].getqUnitsBarcode());
 
@@ -66,7 +68,22 @@ public class BarcodeArrayAdapter extends ArrayAdapter<BarcodeNumber> {
         //user can delete barcode from the list
         deleteBarcode.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                FirebaseDbHandler.mDatabase.child("users").child(FirebaseDbHandler.mUserId).child("Barcode").child(values[position].getKey()).removeValue();
+                new AlertDialog.Builder(view.getContext())
+                        .setTitle(R.string.delete_title)
+                        .setMessage(R.string.delete_message)
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // continue with delete
+                                FirebaseDbHandler.mDatabase.child("users").child(FirebaseDbHandler.mUserId).child("Barcode").child(values[position].getKey()).removeValue();
+                            }
+                        })
+                        .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // do nothing
+                            }
+                        })
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show();
             }
         });
 

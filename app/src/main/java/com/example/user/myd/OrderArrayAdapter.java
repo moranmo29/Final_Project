@@ -1,6 +1,8 @@
 package com.example.user.myd;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -57,10 +59,26 @@ public class OrderArrayAdapter extends ArrayAdapter<Order> {
         deleteOrder.setChecked(false);
         deleteOrder.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView,
+            public void onCheckedChanged(final CompoundButton buttonView,
                                          boolean isChecked) {
                 if (isChecked) {
-                    FirebaseDbHandler.mDatabase.child("users").child(FirebaseDbHandler.mUserId).child("Orders").child(values[position].getKey()).removeValue();
+                    new AlertDialog.Builder(buttonView.getContext())
+                            .setTitle(R.string.delete_title)
+                            .setMessage(R.string.delete_message)
+                            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // continue with delete
+                                    FirebaseDbHandler.mDatabase.child("users").child(FirebaseDbHandler.mUserId).child("Orders").child(values[position].getKey()).removeValue();
+                                }
+                            })
+                            .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // set the switch to OFF
+                                    buttonView.setChecked(false);
+                                }
+                            })
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();
                 } else {
                     //ToDo
                 }

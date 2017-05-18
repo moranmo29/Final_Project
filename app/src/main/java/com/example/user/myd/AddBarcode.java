@@ -60,7 +60,6 @@ public class AddBarcode extends AppCompatActivity {
                     barcodeNum.setText("" + barcode.getBarcodeNum());
                     quantity.setText("" + barcode.getqUnitsBarcode());
                 }
-
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
 

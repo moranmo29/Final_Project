@@ -11,6 +11,10 @@
     <string name="intro_register">אין לך חשבון? הירשם עכשיו</string>
     <string name="register_button">הרשמה</string>
 
+    <!--General-->
+    <string name="delete_title">מחק פריט</string>
+    <string name="delete_message">האם את/ה בטוח/ה שברצונך למחוק פריט זה?</string>
+
     <!--Registration Activity-->
     <string name="reg_text">רישום משתמש חדש</string>
     <string name="create_account">צור חשבון</string>

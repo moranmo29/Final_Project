@@ -1,6 +1,8 @@
 package com.example.user.myd;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -50,7 +52,22 @@ public class CostArrayAdapter extends ArrayAdapter<Cost> {
         //user can delete cost from the list
         deleteCost.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                FirebaseDbHandler.mDatabase.child("users").child(FirebaseDbHandler.mUserId).child("Costs").child(values[position].getKey()).removeValue();
+                new AlertDialog.Builder(view.getContext())
+                        .setTitle(R.string.delete_title)
+                        .setMessage(R.string.delete_message)
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // continue with delete
+                                FirebaseDbHandler.mDatabase.child("users").child(FirebaseDbHandler.mUserId).child("Costs").child(values[position].getKey()).removeValue();
+                            }
+                        })
+                        .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // do nothing
+                            }
+                        })
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show();
             }
         });
 

@@ -87,11 +87,11 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="400dp"
-        android:orientation="vertical"
-        android:weightSum="1"
-        android:layout_below="@+id/textAddBarcode"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textAddBarcode"
+        android:orientation="vertical"
+        android:weightSum="1">
 
         <ImageButton
             android:id="@+id/imgScanBarcode"
@@ -107,8 +107,8 @@
             android:layout_width="285dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:hint="@string/barcode_number"
             android:ems="10"
+            android:hint="@string/barcode_number"
             android:inputType="number"
             android:textAlignment="center" />
 
@@ -166,8 +166,8 @@
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="@string/init_zero_value"
-                android:inputType="number"></EditText>
+                android:inputType="number"
+                android:text="@string/init_zero_value"></EditText>
 
             <Button
                 android:id="@+id/button_minus"
