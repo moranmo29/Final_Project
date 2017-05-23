@@ -130,7 +130,7 @@ public class AddToDo extends AppCompatActivity {
         String value = setPriority.getText().toString();
         int finalValue = Integer.parseInt(value) - 1;
         //Value must be between 1-3
-        if (finalValue <= 1 || finalValue > 3) {
+        if (finalValue < 1 || finalValue > 3) {
             finalValue = 1;
             Toast.makeText(getApplicationContext(), "בחר עדיפות בין 1-3!", Toast.LENGTH_SHORT).show();
         }

@@ -208,6 +208,8 @@
     <string name="sold_quantity_unit">כמות רכישה</string>
     <string name="return_btn">חזור</string>
     <string name="check_btn">בדוק</string>
+    <string name="genre">זאנר</string>
+
 
     <!--Status Activity-->
     <string name="status_title">מצב מלאי</string>

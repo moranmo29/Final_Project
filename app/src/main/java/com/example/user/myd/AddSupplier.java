@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -102,8 +103,9 @@ public class AddSupplier extends AppCompatActivity implements AdapterView.OnItem
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        // TextView myText = (TextView) view;
-        // Toast.makeText(this, "you selected:" + myText.getText(), Toast.LENGTH_SHORT).show();
+      // TextView myText = (TextView) view;
+        //Toast.makeText(this, "you selected:" + myText.getText(), Toast.LENGTH_SHORT).show();
+       // myText.getText().toString();
     }
 
     @Override

@@ -97,7 +97,7 @@ public class AddShop extends AppCompatActivity {
             String contact = cMan.getText().toString().trim();
             String email = emailShop.getText().toString().trim();
 
-            //Creating Supplier object
+            //Creating Shop object
             final Shop shop = new Shop(name, address, contact, email, phone, quantity);
 
             if (isKeyShop == null) {
