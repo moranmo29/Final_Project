@@ -10,6 +10,11 @@
     <string name="link_forgot_password">שכחת את הסיסמא? לחץ כאן</string>
     <string name="intro_register">אין לך חשבון? הירשם עכשיו</string>
     <string name="register_button">הרשמה</string>
+    <string name="validation_mail">חובה להכניס דואר אלקטרוני</string>
+    <string name="validation_password">חובה להכניס סיסמא</string>
+    <string name="error_password_short">הסיסמא קצרה מדי (מינימום 6 תווים)</string>
+    <string name="auth_failed">האימות נכשל! בדוק את נכונות האימייל והסיסמא, או האם הינך משתמש רשום</string>
+    <string name="connection_failed">בדוק את החיבור לאינטרנט</string>
 
     <!--General-->
     <string name="delete_title">מחק פריט</string>
@@ -20,11 +25,17 @@
     <string name="create_account">צור חשבון</string>
     <string name="confirm_hint_password">וודא סיסמא</string>
     <string name="cancel_reg">ביטול</string>
-
-    <!--Registration Activity-->
     <string name="lbl_forgot_password">שכחת את הסיסמא?</string>
     <string name="forgot_password_msg">אנא הכנס את הדואר האלקטרוני לשם איפוס הסיסמא</string>
     <string name="btn_reset_password">אפס סיסמא</string>
+    <string name="error_confirm_password">סיסמא לא תואמת לוודא סיסמא</string>
+    <string name="success_createUserWithEmail">נרשמת בהצלחה!</string>
+    <string name="authentication_failed">האימות נכשל</string>
+
+    <!--Reset Password Activity-->
+    <string name="enter_registered_email_id">הכנס כתובת דואר אלקטרוני רשום</string>
+    <string name="send_instructions">נשלח לדואר האלקטרוני הוראות לאיפוס הסיסמא</string>
+    <string name="send_failed">איפוס סיסמא נכשל</string>
 
     <!--Menu Activity-->
     <string name="menu_text">תפריט</string>
@@ -51,7 +62,6 @@
     <!--I put-->
     <string name="action_sign_in_short">Register</string>
     <string name="minimum_password">Password too short, enter minimum 6 characters!</string>
-    <string name="auth_failed">Authentication failed, check your email and password or sign up</string>
     <string name="title_activity_profile">Firebase</string>
     <string name="title_activity_login">Sign in</string>
     <string name="hint_password">Password</string>
@@ -213,7 +223,6 @@
 
     <!--Status Activity-->
     <string name="status_title">מצב מלאי</string>
-
     <string name="edit_status_title">עריכת מלאי</string>
     <string name="barcode_number_product">מספר ברקוד</string>
     <string name="aviable_quantity_unit">כמות זמינה</string>

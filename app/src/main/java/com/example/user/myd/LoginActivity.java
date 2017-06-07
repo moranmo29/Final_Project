@@ -1,6 +1,8 @@
 package com.example.user.myd;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -17,33 +19,37 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+/*
+ * LoginActivity.java
+ * This class offers login via email and password
+ * using Firebase authentication
+ * */
 public class LoginActivity extends AppCompatActivity {
 
+    //views
     private EditText inputEmail, inputPassword;
+    private Button btnLogin, btnReset, reg;
+
     private FirebaseAuth auth;
     private FirebaseUser mFirebaseUser;
-    private Button btnLogin, btnReset, reg ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //init layout
         setContentView(R.layout.activity_login);
 
-        //Initialize Firebase Auth -  Get Firebase auth instance
+        //Initialize, get Firebase auth instance
         auth = FirebaseAuth.getInstance();
-
         mFirebaseUser = auth.getCurrentUser();
 
-        //Checking User Session
+        //Checking user session
         if (mFirebaseUser != null) {
-            // User is logged in
             startActivity(new Intent(LoginActivity.this, MainMenu.class));
             finish();
         }
 
-        // set the view now
-        setContentView(R.layout.activity_login);
-
+        //init views
         inputEmail = (EditText) findViewById(R.id.email);
         inputPassword = (EditText) findViewById(R.id.password);
         btnLogin = (Button) findViewById(R.id.btn_login);
@@ -53,6 +59,7 @@ public class LoginActivity extends AppCompatActivity {
         //Get Firebase auth instance
         auth = FirebaseAuth.getInstance();
 
+        // ---------------------------- eventListeners ------------------------------
         btnReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,16 +70,16 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = inputEmail.getText().toString();
-                final String password = inputPassword.getText().toString();
-
+                String email = inputEmail.getText().toString().trim();
+                final String password = inputPassword.getText().toString().trim();
+                // Show error message if email is empty
                 if (TextUtils.isEmpty(email)) {
-                    Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), R.string.validation_mail, Toast.LENGTH_SHORT).show();
                     return;
                 }
-
+                // Show error message if password is empty
                 if (TextUtils.isEmpty(password)) {
-                    Toast.makeText(getApplicationContext(), "Enter password!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), R.string.validation_password, Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -81,17 +88,22 @@ public class LoginActivity extends AppCompatActivity {
                         .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-                                // If sign in fails, display a message to the user. If sign in succeeds
-                                // the auth state listener will be notified and logic to handle the
-                                // signed in user can be handled in the listener.
+                                //If sign-in fails: display a message to the user.
                                 if (!task.isSuccessful()) {
-                                    // there was an error
+                                    // Show error message if password is too short
                                     if (password.length() < 6) {
-                                        inputPassword.setError(getString(R.string.minimum_password));
-                                    } else {
+                                        Toast.makeText(LoginActivity.this, R.string.error_password_short, Toast.LENGTH_SHORT).show();
+                                    } else if (!activeNetwork()) {
+                                        // Show error message if user not connected to the internet
+                                        Toast.makeText(LoginActivity.this, getString(R.string.connection_failed), Toast.LENGTH_LONG).show();
+                                    }
+                                    // Show error message if the auth failed (wrong input, check sign-up)
+                                    else {
                                         Toast.makeText(LoginActivity.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
                                     }
+                                    //If sign in succeeds
                                 } else {
+                                    //go to menu activity
                                     Intent intent = new Intent(LoginActivity.this, MainMenu.class);
                                     startActivity(intent);
                                     finish();
@@ -101,19 +113,25 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        //go to registration screen
         reg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 moveReg();
             }
         });
-
     }
 
+    //This method go to registration activity
     private void moveReg() {
         Intent i = new Intent(LoginActivity.this, Registration.class);
         startActivity(i);
     }
 
+    //This method check if there is connection to the internet
+    private boolean activeNetwork() {
+        ConnectivityManager con = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        return con.getActiveNetworkInfo() != null && con.getActiveNetworkInfo().isConnectedOrConnecting();
+    }
 }
 
