@@ -45,8 +45,8 @@ public class CostArrayAdapter extends ArrayAdapter<Cost> {
         ImageButton deleteCost = (ImageButton) rowView.findViewById(R.id.btn_delete);
 
         textDescriptionCost.setText(values[position].getDescription());
-        textPriceUnitCost.setText("מחיר יחידה: " + values[position].getPriceUnit());
-        textQuantityUnit.setText("כמות: " + values[position].getQuantityUnits());
+        textPriceUnitCost.setText("" + values[position].getPriceUnit());
+        textQuantityUnit.setText("" + values[position].getQuantityUnits());
         textPriceTotalCost.setText(""+values[position].getPriceTotal());
 
         //user can delete cost from the list

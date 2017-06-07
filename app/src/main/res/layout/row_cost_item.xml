@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/rounded_border_square"
     android:orientation="horizontal"
     android:weightSum="100">
 
@@ -9,7 +10,7 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="95"
+        android:layout_weight="100"
         android:orientation="vertical"
         android:padding="5dp">
 
@@ -19,28 +20,72 @@
             android:layout_height="wrap_content"
             android:layout_weight="33"
             android:text="תיאור עלות: "
+            android:textColor="#000000"
+            android:textSize="19sp"
             android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/tv_price"
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1.2dp"
+            android:layout_marginTop="2dp"
+            android:background="@color/colorGray" />
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="31"
-            android:text="מחיר יחידה: " />
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/tv_quantity"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="31"
-            android:text="כמות: " />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_weight="31"
+                    android:gravity="center"
+                    android:text="מחיר יחידה " />
+
+                <TextView
+                    android:id="@+id/tv_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_weight="31"
+                    android:text="מחיר יחידה: "
+                    android:textSize="22sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="31"
+                    android:gravity="center"
+                    android:text="כמות " />
+
+                <TextView
+                    android:id="@+id/tv_quantity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="31"
+                    android:text="כמות: "
+                    android:textSize="22sp" />
+            </LinearLayout>
+        </LinearLayout>
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@color/colorPurple"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -48,48 +93,55 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="סך הכל "
-            android:textSize="25sp"
-            android:textStyle="bold" />
+            android:textColor="#FFFFFF"
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/tv_result_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:padding="10dp"
             android:text="0"
             android:textAlignment="center"
+            android:textColor="#FFFFFF"
             android:textSize="25sp"
             android:textStyle="bold" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1.2dp"
+            android:layout_marginTop="12dp"
+            android:background="#FFFFFF" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/btn_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="9dp"
+                android:layout_marginRight="6dp"
+                android:layout_marginTop="5dp"
+                android:background="@null"
+                android:src="@drawable/icon_edit_24" />
+
+            <ImageButton
+                android:id="@+id/btn_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="9dp"
+                android:layout_marginRight="6dp"
+                android:layout_marginTop="5dp"
+                android:background="@null"
+                android:src="@drawable/icon_delete_24" />
+        </LinearLayout>
     </LinearLayout>
 
-    <View
-        android:layout_width="1.2dp"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="7.5dp"
-        android:background="@color/colorGray" />
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <ImageButton
-            android:id="@+id/btn_edit"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="9dp"
-            android:layout_marginTop="10dp"
-            android:background="@null"
-
-            android:src="@drawable/icon_edit_24" />
-
-        <ImageButton
-            android:id="@+id/btn_delete"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="9dp"
-            android:layout_marginTop="10dp"
-            android:background="@null"
-            android:src="@drawable/icon_delete_24" />
-    </LinearLayout>
 
 </LinearLayout>
