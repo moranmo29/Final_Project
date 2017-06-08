@@ -37,12 +37,12 @@ public class AddOrder extends AppCompatActivity {
         setContentView(R.layout.activity_add_order);
 
         cancelBtnOrder = (Button) findViewById(R.id.cancel_btn);
-        descOrder = (EditText)findViewById(R.id.add_order_description);
-        qOrder = (EditText)findViewById(R.id.costsQuantity);
+        descOrder = (EditText) findViewById(R.id.add_order_description);
+        qOrder = (EditText) findViewById(R.id.costsQuantity);
 
-        btnAdd = (Button)findViewById(R.id.button_plus);
-        btnSub = (Button)findViewById(R.id.button_minus);
-        btnSave = (Button)findViewById(R.id.save_btn);
+        btnAdd = (Button) findViewById(R.id.button_plus);
+        btnSub = (Button) findViewById(R.id.button_minus);
+        btnSave = (Button) findViewById(R.id.save_btn);
 
         final Calendar cal = Calendar.getInstance();
         orderYear = cal.get(Calendar.YEAR);
@@ -59,9 +59,17 @@ public class AddOrder extends AppCompatActivity {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     Order order = dataSnapshot.getValue(Order.class);
-                    descOrder.setText(order.getOrderDesc());
-                    qOrder.setText("" + order.getqUnitsOrder());
-                    btnDate.setText("" + order.getDateOrder()); //
+                    try {
+                        descOrder.setText(order.getOrderDesc());
+                        qOrder.setText("" + order.getqUnitsOrder());
+                        btnDate.setText("" + order.getDateOrder()); //
+                    } catch (NullPointerException e) {
+                        runOnUiThread(new Runnable() {
+                            public void run() {
+                                //Toast.makeText(getBaseContext(),"Deleted",Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
                 }
 
                 @Override
@@ -141,7 +149,7 @@ public class AddOrder extends AppCompatActivity {
         int quantity = Integer.parseInt(qOrder.getText().toString().trim());
         String date = btnDate.getText().toString().trim();
         //double priceForUnit = Double.parseDouble(priceUnitCost.getText().toString());
-        if (description.equals("") || quantity == 0 ) {
+        if (description.equals("") || quantity == 0) {
             //displaying toast - must enter the details
             Toast.makeText(this, "חובה להזין את הפרטים", Toast.LENGTH_SHORT).show();
         } else {
@@ -162,7 +170,7 @@ public class AddOrder extends AppCompatActivity {
     }
 
 
-    public void moveToOrders(){
+    public void moveToOrders() {
         Intent i = new Intent(AddOrder.this, Orders.class);
         startActivity(i);
     }

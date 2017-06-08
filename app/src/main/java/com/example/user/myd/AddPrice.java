@@ -19,7 +19,7 @@ import com.google.firebase.database.ValueEventListener;
 public class AddPrice extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     Spinner priceTypeCoin;
-    Button priceCancelBtn,saveBtn, btnPlus, btnMinus;
+    Button priceCancelBtn, saveBtn, btnPlus, btnMinus;
     EditText nameProduct, minQuantity, priceForUnit, pComments;
     private String isKeyPrice;
 
@@ -44,10 +44,18 @@ public class AddPrice extends AppCompatActivity implements AdapterView.OnItemSel
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     PriceList price = dataSnapshot.getValue(PriceList.class);
-                    nameProduct.setText(price.getProductName());
-                    minQuantity.setText(""+price.getqMin());
-                    priceForUnit.setText(""+price.getPriceUnit());
-                    pComments.setText(price.getPriceComments());
+                    try {
+                        nameProduct.setText(price.getProductName());
+                        minQuantity.setText("" + price.getqMin());
+                        priceForUnit.setText("" + price.getPriceUnit());
+                        pComments.setText(price.getPriceComments());
+                    } catch (NullPointerException e) {
+                        runOnUiThread(new Runnable() {
+                            public void run() {
+                                //Toast.makeText(getBaseContext(),"Deleted",Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
                 }
 
                 @Override
@@ -57,8 +65,8 @@ public class AddPrice extends AppCompatActivity implements AdapterView.OnItemSel
             });
         }
 
-        priceTypeCoin = (Spinner)findViewById(R.id.price_unit_spinner);
-        priceCancelBtn = (Button)findViewById(R.id.cancel_btn);
+        priceTypeCoin = (Spinner) findViewById(R.id.price_unit_spinner);
+        priceCancelBtn = (Button) findViewById(R.id.cancel_btn);
 
           /*Manage the data - the adapter will put data inside the spinner
         android.R.layout.simple_spinner_item contain a TextView that is repeated to form the List structure  */
@@ -99,8 +107,8 @@ public class AddPrice extends AppCompatActivity implements AdapterView.OnItemSel
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-         //TextView myText = (TextView) view;
-         //Toast.makeText(this, "you selected:" + myText.getText().toString(), Toast.LENGTH_SHORT).show();
+        //TextView myText = (TextView) view;
+        //Toast.makeText(this, "you selected:" + myText.getText().toString(), Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -112,7 +120,7 @@ public class AddPrice extends AppCompatActivity implements AdapterView.OnItemSel
         String name = nameProduct.getText().toString().trim();
         int quantityMin = Integer.parseInt(minQuantity.getText().toString().trim());
         double priceUnit = Double.parseDouble(priceForUnit.getText().toString().trim());
-        if (name.equals("") || priceUnit < 0 || quantityMin <= 0 ) {
+        if (name.equals("") || priceUnit < 0 || quantityMin <= 0) {
             Toast.makeText(this, "חובה להזין פרטים", Toast.LENGTH_SHORT).show();
         } else {
             String comment = pComments.getText().toString().trim();
@@ -131,7 +139,7 @@ public class AddPrice extends AppCompatActivity implements AdapterView.OnItemSel
         }
     }
 
-    public void moveToPrice(){
+    public void moveToPrice() {
         Intent i = new Intent(AddPrice.this, Price.class);
         startActivity(i);
     }

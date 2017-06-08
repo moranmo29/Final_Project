@@ -134,6 +134,10 @@
     <string name="sup_comments">הערות</string>
     <string name="cancel_btn">ביטול</string>
     <string name="save_btn">שמירה</string>
+    <string name="select_option">מה ברצונך לעשות?</string>
+    <string name="title_call">חיוג לספק</string>
+    <string name="msg_call">האם ברצונך להתקשר לספק זה?</string>
+
 
     <!--Costs Activity-->
     <string name="costs_title">עלויות</string>

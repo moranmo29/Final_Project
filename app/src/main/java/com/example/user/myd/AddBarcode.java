@@ -56,10 +56,19 @@ public class AddBarcode extends AppCompatActivity {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     BarcodeNumber barcode = dataSnapshot.getValue(BarcodeNumber.class);
-                    descriptionBarcode.setText(barcode.getBarcodeDesc());
-                    barcodeNum.setText("" + barcode.getBarcodeNum());
-                    quantity.setText("" + barcode.getqUnitsBarcode());
+                    try {
+                        descriptionBarcode.setText(barcode.getBarcodeDesc());
+                        barcodeNum.setText("" + barcode.getBarcodeNum());
+                        quantity.setText("" + barcode.getqUnitsBarcode());
+                    } catch (NullPointerException e) {
+                        runOnUiThread(new Runnable() {
+                            public void run() {
+                                //Toast.makeText(getBaseContext(),"Deleted",Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
                 }
+
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
 

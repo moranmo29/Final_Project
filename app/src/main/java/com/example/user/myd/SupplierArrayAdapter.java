@@ -5,6 +5,9 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
+import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.net.Uri;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -14,7 +17,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +27,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.Random;
 
 
 /**
@@ -33,6 +40,7 @@ public class SupplierArrayAdapter extends ArrayAdapter<Supplier> {
     private final Context context;
     private final Supplier[] values;
     private final ArrayAdapter adapter;
+    private CharSequence options[] = new CharSequence[] {"ערוך פרטי ספק", "מחק ספק זה"};
 
 
     public SupplierArrayAdapter(Context context, Supplier[] values) {
@@ -50,15 +58,13 @@ public class SupplierArrayAdapter extends ArrayAdapter<Supplier> {
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rowView = inflater.inflate(R.layout.row_supplier_item, parent, false);
         TextView textNameSupplier = (TextView) rowView.findViewById(R.id.tv_name);
+        Button showName = (Button) rowView.findViewById(R.id.tv_name); // display name supplier on button
         TextView textCompanySupplier = (TextView) rowView.findViewById(R.id.tv_role);
         TextView textAddressSupplier = (TextView) rowView.findViewById(R.id.tv_address);
         TextView textCommentSupplier = (TextView) rowView.findViewById(R.id.tv_comment);
 
-        ImageButton editSupplier = (ImageButton) rowView.findViewById(R.id.btn_edit);
-        ImageButton deleteSupplier = (ImageButton) rowView.findViewById(R.id.btn_delete);
         ImageButton callNumber = (ImageButton) rowView.findViewById(R.id.btn_call);
         ImageButton sendMail = (ImageButton) rowView.findViewById(R.id.btn_mail);
-
 
         textNameSupplier.setText(values[position].getName());
         textCompanySupplier.setText("חברה: " + values[position].getCompany());
@@ -68,14 +74,28 @@ public class SupplierArrayAdapter extends ArrayAdapter<Supplier> {
         //user can call to the correct supplier
         callNumber.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent callIntent = new Intent(Intent.ACTION_CALL);
-                callIntent.setData(Uri.parse("tel:" + values[position].getPhoneNumber()));
+                new AlertDialog.Builder(view.getContext())
+                        .setTitle(R.string.title_call)
+                        .setMessage(R.string.msg_call)
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent callIntent = new Intent(Intent.ACTION_CALL);
+                                callIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                callIntent.setData(Uri.parse("tel:" + values[position].getPhoneNumber()));
 
-                if (ActivityCompat.checkSelfPermission(context,
-                        android.Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                    return;
-                }
-                view.getContext().startActivity(callIntent);
+                                if (ActivityCompat.checkSelfPermission(context,
+                                        android.Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                                    return;
+                                }
+                                getContext().startActivity(callIntent);
+                            }
+                        })
+                        .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // do nothing
+                            }
+                        })
+                        .show();
             }
         });
 
@@ -95,67 +115,48 @@ public class SupplierArrayAdapter extends ArrayAdapter<Supplier> {
             }
         });
 
-        //user can delete supplier from the list
-        deleteSupplier.setOnClickListener(new View.OnClickListener() {
+        //User can edit or delete from list when he clicked on name button
+        showName.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                new AlertDialog.Builder(view.getContext())
-                        .setTitle(R.string.delete_title)
-                        .setMessage(R.string.delete_message)
-                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                // continue with delete
-                                //String supplierId = mDatabase.child("users").child(mUserId).child("Supplier").child(SupplierArrayAdapter.getItem(position).getRefKey());
+                AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                builder.setCancelable(false);
+                builder.setTitle(R.string.select_option);
+                builder.setItems(options, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // the user clicked on options[which]
+                        switch (which) {
+                            case 0: // Edit
+                            {
+                                //user can edit supplier from the list
+                                Intent intent = new Intent(getContext(), AddSupplier.class);
+                                //Calling startActivity() from outside of an Activity  context requires the FLAG_ACTIVITY_NEW_TASK flag
+                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                intent.putExtra("EXTRA_KEY_ID", values[position].getKey());
+                                getContext().startActivity(intent);
+                            }
+                            break;
+                            case 1: // Delete
+                            {
+                                //user can delete supplier from the list
                                 FirebaseDbHandler.mDatabase.child("users").child(FirebaseDbHandler.mUserId).child("Supplier").child(values[position].getKey()).removeValue();
-                                //Log.e("Key Value ", "" + values[position].getKey());
+                                break;
                             }
-                        })
-                        .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                // do nothing
-                            }
-                        })
-                        .setIcon(android.R.drawable.ic_dialog_alert)
-                        .show();
-            }
-        });
-
-        //user can delete supplier from the list
-        deleteSupplier.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                new AlertDialog.Builder(view.getContext())
-                        .setTitle(R.string.delete_title)
-                        .setMessage(R.string.delete_message)
-                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                // continue with delete
-                                //String supplierId = mDatabase.child("users").child(mUserId).child("Supplier").child(SupplierArrayAdapter.getItem(position).getRefKey());
-                                FirebaseDbHandler.mDatabase.child("users").child(FirebaseDbHandler.mUserId).child("Supplier").child(values[position].getKey()).removeValue();
-                                //Log.e("Key Value ", "" + values[position].getKey());
-                            }
-                        })
-                        .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                // do nothing
-                            }
-                        })
-                        .setIcon(android.R.drawable.ic_dialog_alert)
-                        .show();
-            }
-        });
-
-        //user can edit supplier from the list
-        editSupplier.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-
-                Intent intent = new Intent(view.getContext(), AddSupplier.class);
-                intent.putExtra("EXTRA_KEY_ID", values[position].getKey());
-                view.getContext().startActivity(intent);
-
+                            default:
+                                break;
+                        }
+                    }
+                });
+                builder.setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //the user clicked on Cancel
+                    }
+                });
+                builder.show();
             }
         });
 
         return rowView;
     }
-
-
 }

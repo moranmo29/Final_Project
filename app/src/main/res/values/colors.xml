@@ -9,4 +9,16 @@
     <color name="colorLightGreen">#F2FBF8</color>
     <color name="colorGray">#505C76</color>
     <color name="colorPurple">#5A4D94</color>
+
+    <!-- All of the possible tile background colors - SupplierArrayAdapter-->
+    <array name="letter_tile_colors">
+        <item>#f16364</item>
+        <item>#f58559</item>
+        <item>#f9a43e</item>
+        <item>#e4c62e</item>
+        <item>#67bf74</item>
+        <item>#59a2be</item>
+        <item>#2093cd</item>
+        <item>#ad62a7</item>
+    </array>
 </resources>

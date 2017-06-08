@@ -18,6 +18,9 @@ import com.google.firebase.auth.FirebaseUser;
 import com.liuguangqiang.cookie.CookieBar;
 import com.liuguangqiang.cookie.OnActionClickListener;
 
+/*
+* @author Moran Mor-Yosef
+* */
 public class MainMenu extends AppCompatActivity {
 
     GridView gv;

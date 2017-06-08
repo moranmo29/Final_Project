@@ -42,12 +42,20 @@ public class AddShop extends AppCompatActivity {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     Shop shop = dataSnapshot.getValue(Shop.class);
-                    nameShop.setText(shop.getShopName());
-                    cMan.setText(shop.getContactMan());
-                    addressShop.setText(shop.getShopAddress());
-                    emailShop.setText(shop.getShopEmail());
-                    nPhone.setText(shop.getShopNumberPhone());
-                    qSold.setText(""+shop.getqSold());
+                    try {
+                        nameShop.setText(shop.getShopName());
+                        cMan.setText(shop.getContactMan());
+                        addressShop.setText(shop.getShopAddress());
+                        emailShop.setText(shop.getShopEmail());
+                        nPhone.setText(shop.getShopNumberPhone());
+                        qSold.setText("" + shop.getqSold());
+                    } catch (NullPointerException e) {
+                        runOnUiThread(new Runnable() {
+                            public void run() {
+                                //Toast.makeText(getBaseContext(),"Deleted",Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
                 }
 
                 @Override
@@ -90,7 +98,7 @@ public class AddShop extends AppCompatActivity {
         String name = nameShop.getText().toString().trim();
         String phone = nPhone.getText().toString().trim();
         int quantity = Integer.parseInt(qSold.getText().toString().trim());
-        if (name.equals("") || phone.equals("") || quantity <= 0 ) {
+        if (name.equals("") || phone.equals("") || quantity <= 0) {
             Toast.makeText(this, "חובה להזין שם החנות, מספר טלפון וכמות", Toast.LENGTH_SHORT).show();
         } else {
             String address = addressShop.getText().toString().trim();
@@ -111,7 +119,7 @@ public class AddShop extends AppCompatActivity {
         }
     }
 
-    public void moveToShops(){
+    public void moveToShops() {
         Intent i = new Intent(AddShop.this, Shops.class);
         startActivity(i);
     }
