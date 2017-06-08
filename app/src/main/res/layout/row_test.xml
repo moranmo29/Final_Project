@@ -2,14 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/rounded_border_square"
+    android:background="@color/bgContent"
     android:baselineAligned="false"
     android:orientation="horizontal">
 
     <!-- LEFT TITLE PART -->
     <RelativeLayout
-        android:layout_width="150dp"
-        android:layout_height="108dp"
+        android:layout_width="100dp"
+        android:layout_height="105dp"
         android:layout_weight="3"
         android:background="@null"
         android:gravity="center_horizontal"
@@ -17,8 +17,8 @@
 
         <ImageButton
             android:id="@+id/btn_edit"
-            android:layout_width="50dp"
-            android:layout_height="40dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
@@ -28,22 +28,22 @@
         <ImageButton
             android:id="@+id/btn_delete"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="35dp"
             android:background="@drawable/icon_del_order"
             android:scaleType="fitXY"
-            android:layout_centerVertical="true"
+            android:layout_below="@+id/btn_edit"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
         <Button
             android:id="@+id/alertImg"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="35dp"
+            android:background="@drawable/icon_alarm_order"
+            android:scaleType="fitXY"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:background="@drawable/icon_alarm_order"
-            android:scaleType="fitXY" />
+            android:layout_alignParentStart="true" />
 
     </RelativeLayout>
     <!-- RIGHT TITLE PART -->
@@ -51,35 +51,35 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:background="@drawable/rounded_border_square"
-        android:paddingBottom="1dp"
-        android:paddingEnd="1dp"
-        android:paddingLeft="1dp"
-        android:paddingRight="1dp"
-        android:paddingStart="1dp"
-        android:paddingTop="1dp">
+        android:background="@color/bgTitleRight"
+        android:paddingBottom="20dp"
+        android:paddingEnd="20dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="20dp"
+        android:paddingStart="15dp"
+        android:paddingTop="20dp">
 
         <TextView
             android:id="@+id/tv_orderDescription"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:ellipsize="marquee"
             android:fadingEdge="horizontal"
-            android:background="#9FA8DA"
-            android:padding="2dp"
             android:maxLines="1"
             android:text="@string/description_order"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
 
         <ImageView
             android:id="@+id/title_from_to_dots_divider"
             android:layout_width="match_parent"
-            android:layout_height="5dp"
+            android:layout_height="1dp"
             android:layout_below="@id/tv_orderDescription"
             android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
             android:src="@color/contentDividerLine" />
 
         <TextView
@@ -91,9 +91,8 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:text="@string/order_quan"
-            android:textColor="#3F51B5"
-            android:textSize="14sp"
-            android:textStyle="bold"/>
+            android:textColor="#000000"
+            android:textSize="14sp" />
 
         <TextView
             style="@style/TitleConTitle"

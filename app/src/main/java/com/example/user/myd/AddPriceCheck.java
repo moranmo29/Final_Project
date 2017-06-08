@@ -47,15 +47,22 @@ public class AddPriceCheck extends AppCompatActivity implements AdapterView.OnIt
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                moveToPrice();
+                moveToMenu();
             }
         });
         checkBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 double calc = 0;
-                double unit = Double.parseDouble(totalCostUnit.getText().toString().trim());
-                double priceCustomer = Double.parseDouble(customerPrice.getText().toString().trim());
+                double unit,priceCustomer;
+                try {
+                    unit = Double.parseDouble(totalCostUnit.getText().toString().trim());
+                    priceCustomer = Double.parseDouble(customerPrice.getText().toString().trim());
+                } catch (NumberFormatException e) {
+                    //default values
+                    unit = 0;
+                    priceCustomer = 0;
+                }
                 if(priceCustomer < unit)
                 {
                     Toast.makeText(getBaseContext(), "עסקה זו יוצאת בהפסד" , Toast.LENGTH_SHORT).show();
@@ -98,8 +105,8 @@ public class AddPriceCheck extends AppCompatActivity implements AdapterView.OnIt
 
     }
 
-    public void moveToPrice(){
-        Intent i = new Intent(AddPriceCheck.this, Price.class);
+    public void moveToMenu(){
+        Intent i = new Intent(AddPriceCheck.this, MainMenu.class);
         startActivity(i);
     }
 

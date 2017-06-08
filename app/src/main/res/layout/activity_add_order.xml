@@ -66,13 +66,19 @@
             android:maxLines="1"
             android:textAlignment="center" />
 
+        <Spinner
+            android:id="@+id/spinnerSuppliers"
+            android:layout_width="285dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            android:layout_gravity="center"/>
 
         <TextView
             android:id="@+id/quantityUnit"
             android:layout_width="98dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="65dp"
+            android:layout_marginTop="20dp"
             android:layout_weight="0.08"
             android:ems="10"
             android:text="@string/quantity_unit"

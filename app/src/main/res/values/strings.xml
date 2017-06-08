@@ -93,17 +93,18 @@
         ניהול רשימת החנויות בהן משווק המוצר\n
         <b>טיפולים -\n</b>
         ניהול ומעקב אחר משימות שיש לבצע\n
-<b>ברקוד -\n</b>
+<b>ברקוד/מצב מלאי -\n</b>
         ניהול רשימת מספרי ברקוד המוקצים למוצר\n
+                 מעקב אחר כמות המלאי הזמינה של המוצר\n
         <b>מחירון -\n</b>
         ניהול מחיר מחירון לצרכן ובדיקת עלות-רווח\n
-        <b>מצב מלאי -\n</b>
-         מעקב אחר כמות המלאי הזמינה של המוצר
+        <b>בדיקת רווח -\n</b>
+                חישוב רווח של עלות מול ייצור\n
     </string>
 
     <!--Suppliers Activity-->
     <string name="supplier_title">ספקים</string>
-    <string name="search_supplier">חפש</string>
+    <string name="search_supplier">חיפוש ספק</string>
     <string name="new_supplier_title">ספק חדש</string>
     <string name="sup_name">*שם ספק</string>
     <string name="sup_role">חברה/תפקיד</string>
@@ -143,15 +144,16 @@
     <string name="costs_title">עלויות</string>
 
     <string name="new_costs_title">הוספת עלות</string>
+    <string name="search_cost">חיפוש עלות</string>
     <string name="information">information</string>
     <string name="description_cost">תיאור</string>
     <string name="costs_price_unit">מחיר עלות יחידה</string>
     <string name="type_coin">סוג מטבע</string>
     <string-array name="typeCoinSpinner">
-        <item>שקל</item>
-        <item>דולר</item>
-        <item>יורו</item>
-        <item>אחר</item>
+        <item>₪</item>
+        <item>$</item>
+        <item>€</item>
+        <item> </item>
     </string-array>
     <string name="quantity_unit">כמות יחידות</string>
     <string name="plus_counter">+</string>
@@ -160,6 +162,7 @@
 
     <!--Orders Activity-->
     <string name="orders_title">הזמנות</string>
+    <string name="search_order">חפש הזמנה</string>
     <string name="order_quan">0</string>
 
     <string name="new_order_title">הוספת הזמנה</string>
@@ -229,11 +232,5 @@
     <string name="check_btn">בדוק</string>
     <string name="genre">זאנר</string>
 
-
-    <!--Status Activity-->
-    <string name="status_title">מצב מלאי</string>
-    <string name="edit_status_title">עריכת מלאי</string>
-    <string name="barcode_number_product">מספר ברקוד</string>
-    <string name="aviable_quantity_unit">כמות זמינה</string>
 
 </resources>

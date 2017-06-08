@@ -2,80 +2,142 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:weightSum="100">
+    android:background="@drawable/rounded_border_square"
+    android:baselineAligned="false"
+    android:orientation="horizontal">
 
-
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="98"
-        android:orientation="horizontal"
-        android:padding="5dp">
+    <!-- LEFT TITLE PART -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_weight="3"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingBottom="1dp"
+        android:paddingLeft="1dp"
+        android:paddingRight="1dp"
+        android:paddingTop="1dp">
 
         <Button
             android:id="@+id/tv_name"
-            android:layout_width="@dimen/add_size"
-            android:layout_height="@dimen/add_size"
-            android:layout_alignParentBottom="true"
+            android:layout_width="wrap_content"
+            android:layout_height="120dp"
+            android:background="#59a2be"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+    <!-- RIGHT TITLE PART -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:paddingBottom="5dp"
+        android:paddingEnd="10dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="10dp"
+        android:paddingStart="5dp"
+        android:paddingTop="10dp">
+
+        <ImageView
+            android:id="@+id/title_to_dots"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:layout_marginBottom="15dp"
-            android:layout_marginLeft="5dp"
-            android:background="@drawable/oval_sec"
-            android:textColor="#FFFFFF"/>
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="98"
-            android:orientation="vertical"
-            android:padding="5dp">
+            android:layout_alignParentStart="true"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/from_to_purple" />
 
-            <TextView
-                android:id="@+id/tv_role"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="20"
-                android:text="שם חברה: " />
+        <TextView
+            android:id="@+id/tv_role"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/title_to_dots"
+            android:layout_marginTop="-5dp"
+            android:layout_toEndOf="@+id/title_to_dots"
+            android:layout_toRightOf="@+id/title_to_dots"
+            android:ellipsize="marquee"
+            android:fadingEdge="horizontal"
+            android:maxLines="1"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/tv_address"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="20"
-                android:text="כתובת: " />
+        <ImageView
+            android:id="@+id/title_from_to_dots_divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="20dp"
+            android:layout_toEndOf="@+id/title_to_dots"
+            android:layout_toRightOf="@+id/title_to_dots"
+            android:src="@color/contentDividerLine" />
 
-            <TextView
-                android:id="@+id/tv_comment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="33"
-                android:text="הערות: " />
-        </LinearLayout>
-    </LinearLayout>
+        <TextView
+            android:id="@+id/tv_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title_from_to_dots_divider"
+            android:layout_toEndOf="@id/title_to_dots"
+            android:layout_toRightOf="@+id/title_to_dots"
+            android:ellipsize="marquee"
+            android:fadingEdge="horizontal"
+            android:maxLines="1"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        <TextView
+            android:id="@+id/tv_comment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="45dp"
+            android:layout_toEndOf="@id/title_to_dots"
+            android:layout_toRightOf="@+id/title_to_dots"
+            android:layout_weight="33"
+            android:ellipsize="marquee"
+            android:maxLines="1"
+            android:text="הערות: " />
 
         <ImageButton
             android:id="@+id/btn_call"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="14"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
             android:background="@null"
-            android:padding="5dp"
-            android:src="@drawable/icon_call_361" />
+            android:scaleType="fitXY"
+            android:src="@drawable/icon_call_341" />
 
         <ImageButton
             android:id="@+id/btn_mail"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="7.5dp"
-            android:layout_weight="14"
-            android:background="@null"
-            android:padding="5dp"
-            android:src="@drawable/icon_mail_36" />
-    </LinearLayout>
+            android:layout_width="39dp"
+            android:layout_height="39dp"
+            android:layout_marginBottom="2dp"
+            android:scaleType="fitXY"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="147dp"
+            android:background="@drawable/icon_mail_342" />
 
+        <ImageButton
+            android:id="@+id/btn_sms"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="102dp"
+            android:background="@drawable/icon_sms_34"
+            android:scaleType="fitXY" />
+
+        <ImageButton
+            android:id="@+id/btn_map"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="56dp"
+            android:background="@null"
+            android:scaleType="fitXY"
+            android:src="@drawable/icon_map_pin_341" />
+
+    </RelativeLayout>
 </LinearLayout>

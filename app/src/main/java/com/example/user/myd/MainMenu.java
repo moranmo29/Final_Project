@@ -26,7 +26,7 @@ public class MainMenu extends AppCompatActivity {
     GridView gv;
     Context context;
     ArrayList prgmName;
-    public static String [] prgmNameList={"ספקים","עלויות","הזמנות","חנויות משווקות","טיפולים","ברקוד","מחירון","מצב מלאי","התנתק"};
+    public static String [] prgmNameList={"ספקים","עלויות","הזמנות","חנויות משווקות","טיפולים","ברקוד","מחירון","בדיקת רווח","התנתק"};
     public static int [] prgmImages={R.drawable.suppliers,R.drawable.costs,R.drawable.orders,R.drawable.shops,R.drawable.to_do,R.drawable.barcode,R.drawable.price,R.drawable.status_inv,R.drawable.log_out};
     private FirebaseAuth auth;
 
@@ -77,7 +77,7 @@ public class MainMenu extends AppCompatActivity {
                         startActivity(i);
                         break;
                     case 7:
-                        i = new Intent(MainMenu.this,Status.class);
+                        i = new Intent(MainMenu.this,AddPriceCheck.class);
                         startActivity(i);
                         break;
                     case 8:

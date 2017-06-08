@@ -41,13 +41,15 @@ public class CostArrayAdapter extends ArrayAdapter<Cost> {
         TextView textQuantityUnit = (TextView) rowView.findViewById(R.id.tv_quantity);
         TextView textPriceTotalCost = (TextView) rowView.findViewById(R.id.tv_result_price);
 
+
         ImageButton editCost = (ImageButton) rowView.findViewById(R.id.btn_edit);
         ImageButton deleteCost = (ImageButton) rowView.findViewById(R.id.btn_delete);
 
         textDescriptionCost.setText(values[position].getDescription());
-        textPriceUnitCost.setText("" + values[position].getPriceUnit());
+        textPriceUnitCost.setText(""  + values[position].getUnitCoin() + values[position].getPriceUnit());
         textQuantityUnit.setText("" + values[position].getQuantityUnits());
-        textPriceTotalCost.setText(""+values[position].getPriceTotal());
+        textPriceTotalCost.setText(""+ values[position].getUnitCoin() +values[position].getPriceTotal());
+
 
         //user can delete cost from the list
         deleteCost.setOnClickListener(new View.OnClickListener() {

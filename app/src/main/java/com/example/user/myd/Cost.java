@@ -9,6 +9,7 @@ import com.google.firebase.database.Exclude;
 public class Cost {
 
     private String description;
+    private String unitCoin; // for the spinner
     private double priceUnit, priceTotal;
     private int quantityUnits;
     //Firebase needs a key property
@@ -21,10 +22,11 @@ public class Cost {
         //Needed for serialization
     }
 
-    public Cost(String description, double priceUnit, double priceTotal, int quantityUnits)
+    public Cost(String description, double priceUnit, String unitCoin, double priceTotal, int quantityUnits)
     {
         this.description = description;
         this.priceUnit = priceUnit;
+        this.unitCoin = unitCoin;
         this.priceTotal = priceTotal;
         this.quantityUnits = quantityUnits;
     }
@@ -68,6 +70,10 @@ public class Cost {
 
     public void setKey(String key) {
         this.key = key;
+    }
+
+    public String getUnitCoin() {
+        return unitCoin;
     }
 
 }

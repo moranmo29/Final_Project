@@ -6,18 +6,26 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 
 public class AddOrder extends AppCompatActivity {
@@ -25,10 +33,13 @@ public class AddOrder extends AppCompatActivity {
     Button cancelBtnOrder;
     EditText descOrder, qOrder;
     Button btnSave, btnAdd, btnSub;
+    String selected; // for spinner
     private int orderYear, orderMonth, orderDay;
     static final int DATE_DIALOG_ID = 0;
     private Button btnDate;
     private String isKeyOrder;
+    private Spinner supplierList;
+    private List<String> nameSupplers;
 
 
     @Override
@@ -43,14 +54,56 @@ public class AddOrder extends AppCompatActivity {
         btnAdd = (Button) findViewById(R.id.button_plus);
         btnSub = (Button) findViewById(R.id.button_minus);
         btnSave = (Button) findViewById(R.id.save_btn);
+        supplierList = (Spinner)findViewById(R.id.spinnerSuppliers);
 
         final Calendar cal = Calendar.getInstance();
         orderYear = cal.get(Calendar.YEAR);
         orderMonth = cal.get(Calendar.MONTH);
         orderDay = cal.get(Calendar.DAY_OF_MONTH);
-
+        nameSupplers= new ArrayList<>();
         //date dialog
         showDialogOnButtonClick();
+
+        // Displays the supplier list at Spinner
+        DatabaseReference ref = FirebaseDbHandler.mDatabase.child("users").child(FirebaseDbHandler.mUserId).child("Supplier");
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                nameSupplers.add("בחר ספק"); // add title to the spinner
+                for(DataSnapshot singleSnapshot : dataSnapshot.getChildren()){
+                    //Getting the names of all suppliers that exist
+                    nameSupplers.add(singleSnapshot.getValue(Supplier.class).getName());
+
+                }
+                //Displays the list of supplier in Spinner - the adapter will put data inside the spinner
+                ArrayAdapter<String> adp1=new ArrayAdapter<String>(getBaseContext(),
+                        android.R.layout.simple_list_item_1,nameSupplers);
+                adp1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                supplierList.setAdapter(adp1);
+                //Get the selected text in Spinner via position
+                supplierList.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        selected = parent.getItemAtPosition(position).toString().trim();
+                        //If user choose the spinner title, insert an empty string
+                        if (selected == parent.getItemAtPosition(0).toString().trim())
+                        {
+                            selected = "";
+                        }
+                    }
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                });
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
 
         isKeyOrder = getIntent().getStringExtra("EXTRA_KEY_ID");
         if (isKeyOrder != null) {
@@ -77,6 +130,7 @@ public class AddOrder extends AppCompatActivity {
 
                 }
             });
+
         }
 
 
@@ -154,7 +208,7 @@ public class AddOrder extends AppCompatActivity {
             Toast.makeText(this, "חובה להזין את הפרטים", Toast.LENGTH_SHORT).show();
         } else {
             //Creating Order object
-            final Order order = new Order(description, quantity, date);
+            final Order order = new Order(description, quantity, date, selected);
             //final Cost cost = new Cost(description,priceForUnit, priceForUnit*quantity,quantity);
 
 

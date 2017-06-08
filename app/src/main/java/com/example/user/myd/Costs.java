@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -18,20 +19,62 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 public class Costs extends AppCompatActivity {
 
     ImageButton floatButton, homeFromCosts;
     private Cost[] costs;
     private ListView listView;
+    private SearchView searchView;
+    private CostArrayAdapter adapterCost; ///for the searchview
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_costs);
-
+        String value = getIntent().getStringExtra("coins");
         listView = (ListView) findViewById(R.id.lv_Costs);
+        searchView = (SearchView) findViewById(R.id.searchCost);
 
-        Log.e(" Cost ", "" + FirebaseDbHandler.mDatabase);
+        //Log.e(" Cost ", "" + FirebaseDbHandler.mDatabase);
+
+        //----------------------------- search costs -------------------------------
+        //*** setOnQueryTextFocusChangeListener ***
+        searchView.setOnQueryTextFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                // TODO Auto-generated method stub
+            }
+        });
+
+        //*** setOnQueryTextListener ***
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                // TODO Auto-generated method stub
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                // TODO Auto-generated method stub
+                newText = newText.toLowerCase(); // the text that the user insert
+                ArrayList<Cost> newList = new ArrayList<>();
+                for (Cost c : costs) {
+                    String descriptionCost = c.getDescription().toLowerCase(); // search cost by description
+                    if (descriptionCost.contains(newText)) {
+                        newList.add(c);
+                    }
+                }
+                Cost[] costsArray = newList.toArray(new Cost[newList.size()]);
+                adapterCost = new CostArrayAdapter(getBaseContext(), costsArray);
+                listView.setAdapter(adapterCost);
+                return true;
+            }
+        });
+        //---------------------------------------- End Search ---------------------------------------------
 
         //Retrieve values from firebase
         FirebaseDbHandler.mDatabase.child("users").child(FirebaseDbHandler.mUserId).child("Costs").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -108,15 +151,14 @@ public class Costs extends AppCompatActivity {
 
     }
 
-    public void moveFirstScreen() {
+    private void moveFirstScreen() {
         Intent i = new Intent(Costs.this, MainMenu.class);
         startActivity(i);
     }
 
-    public void moveAddSCosts() {
+    private void moveAddSCosts() {
         Intent i = new Intent(Costs.this, AddCosts.class);
         startActivity(i);
     }
-
 
 }

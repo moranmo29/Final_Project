@@ -8,7 +8,8 @@
     <color name="colorRed">#DF6022</color>
     <color name="colorLightGreen">#F2FBF8</color>
     <color name="colorGray">#505C76</color>
-    <color name="colorPurple">#5A4D94</color>
+    <color name="colorPurple">#594691</color>
+    <color name="contentDividerLine">#e0e0e0</color>
 
     <!-- All of the possible tile background colors - SupplierArrayAdapter-->
     <array name="letter_tile_colors">
@@ -21,4 +22,15 @@
         <item>#2093cd</item>
         <item>#ad62a7</item>
     </array>
+
+    <color name="bgBackSideColor">#f4f0ff</color>
+    <color name="bgTitleLeft">#594691</color>
+    <color name="bgTitleRight">#ffffff</color>
+    <color name="bgContentTop">#594691</color>
+    <color name="bgContent">#ffffff</color>
+    <color name="contentBadgeTitle">#a9a9a9</color>
+    <color name="titleBadgeTitle">#adafb1</color>
+    <color name="titleBadgeText">#adafb1</color>
+    <color name="mainTextColor">#343d43</color>
+    <color name="btnRequest">#ffbf12</color>
 </resources>

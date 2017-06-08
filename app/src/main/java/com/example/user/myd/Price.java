@@ -16,7 +16,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class Price extends AppCompatActivity {
 
-    ImageButton home, addPrice, addCheck;
+    ImageButton home, addPrice;
     private PriceList[] prices;
     private ListView listView;
 
@@ -80,7 +80,6 @@ public class Price extends AppCompatActivity {
 
         home = (ImageButton)findViewById(R.id.home_btnPrice);
         addPrice = (ImageButton)findViewById(R.id.btn_add_price);
-        addCheck = (ImageButton) findViewById(R.id.btn_check_price);
 
         home.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,12 +95,6 @@ public class Price extends AppCompatActivity {
             }
         });
 
-        addCheck.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                moveAddPriceCheckScreen();
-            }
-        });
 
     }
 
@@ -112,11 +105,6 @@ public class Price extends AppCompatActivity {
 
     public void moveAddPriceScreen() {
         Intent i = new Intent(Price.this, AddPrice.class);
-        startActivity(i);
-    }
-
-    public void moveAddPriceCheckScreen() {
-        Intent i = new Intent(Price.this, AddPriceCheck.class);
         startActivity(i);
     }
 

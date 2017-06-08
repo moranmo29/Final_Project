@@ -16,8 +16,8 @@ public class AlarmReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent arg1) {
         Toast.makeText(context, "תזכורת! הגעת הזמנה", Toast.LENGTH_LONG).show();
-        String title="תזכורת! הגעת הזמנה ";
-        String msg = "קבלת הזמנה חדשה";
+        String title="אפליקציה לניהול ושיווק מוצר";
+        String msg = "תזכורת! הגעת הזמנה - קבלת הזמנה חדשה";
 
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context)
                 .setSmallIcon(R.mipmap.ic_launcher)

@@ -28,7 +28,13 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
+
+import static com.example.user.myd.R.drawable.phone;
 
 
 /**
@@ -62,12 +68,13 @@ public class SupplierArrayAdapter extends ArrayAdapter<Supplier> {
         TextView textCompanySupplier = (TextView) rowView.findViewById(R.id.tv_role);
         TextView textAddressSupplier = (TextView) rowView.findViewById(R.id.tv_address);
         TextView textCommentSupplier = (TextView) rowView.findViewById(R.id.tv_comment);
-
         ImageButton callNumber = (ImageButton) rowView.findViewById(R.id.btn_call);
-        ImageButton sendMail = (ImageButton) rowView.findViewById(R.id.btn_mail);
+        final ImageButton sendMail = (ImageButton) rowView.findViewById(R.id.btn_mail);
+        ImageButton sendSMS = (ImageButton) rowView.findViewById(R.id.btn_sms);
+        ImageButton searchLocation = (ImageButton) rowView.findViewById(R.id.btn_map);
 
         textNameSupplier.setText(values[position].getName());
-        textCompanySupplier.setText("חברה: " + values[position].getCompany());
+        textCompanySupplier.setText("" + values[position].getCompany());
         textAddressSupplier.setText("כתובת: " + values[position].getAddress());
         textCommentSupplier.setText("הערה: " + values[position].getComments());
 
@@ -99,6 +106,16 @@ public class SupplierArrayAdapter extends ArrayAdapter<Supplier> {
             }
         });
 
+        //user can send sms to supplier
+        sendSMS.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent sendIntent = new Intent(Intent.ACTION_VIEW);
+                sendIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                sendIntent.setData(Uri.parse("sms:" + values[position].getPhoneNumber()));
+                sendIntent.putExtra("sms_body", "");
+                getContext().startActivity(sendIntent);            }
+        });
+
         //user can send mail to the correct supplier
         sendMail.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -114,6 +131,19 @@ public class SupplierArrayAdapter extends ArrayAdapter<Supplier> {
                 }
             }
         });
+
+        //android intent for opening google-maps
+        searchLocation.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                String uri = "http://maps.google.com/maps?q=loc:" + values[position].getAddress();
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+                intent.setFlags(Intent.FLAG_ACTIVITY_FORWARD_RESULT);
+                intent.setFlags(Intent.FLAG_ACTIVITY_PREVIOUS_IS_TOP);
+                intent.setData(Uri.parse(uri));
+                getContext().startActivity(intent);
+            }
+        });
+
 
         //User can edit or delete from list when he clicked on name button
         showName.setOnClickListener(new View.OnClickListener() {

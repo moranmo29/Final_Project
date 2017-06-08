@@ -27,6 +27,7 @@ import java.util.List;
 public class AddCosts extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     Spinner typeCoin;
+    String selected; // for spinner
     Button cancelBtn, saveBtn, btnPlus, btnMinus;
     EditText descriptionCost, priceUnitCost, quantityUnitsCost, priceTotalCost;
 
@@ -72,9 +73,18 @@ public class AddCosts extends AppCompatActivity implements AdapterView.OnItemSel
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     Cost cost = dataSnapshot.getValue(Cost.class);
-                    descriptionCost.setText(cost.getDescription());
-                    priceUnitCost.setText("" + cost.getPriceUnit());
-                    quantityUnitsCost.setText("" + cost.getQuantityUnits());
+                    try {
+                        descriptionCost.setText(cost.getDescription());
+                        priceUnitCost.setText("" + cost.getPriceUnit());
+                        quantityUnitsCost.setText("" + cost.getQuantityUnits());
+                    }
+                    catch(NullPointerException e){
+                        runOnUiThread(new Runnable(){
+                            public void run(){
+                                //Toast.makeText(getBaseContext(),"Deleted",Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
                 }
 
                 @Override
@@ -115,20 +125,26 @@ public class AddCosts extends AppCompatActivity implements AdapterView.OnItemSel
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        selected = adapterView.getItemAtPosition(i).toString().trim();
         // TextView myText = (TextView) view;
         // Toast.makeText(this, "you selected:" + myText.getText(), Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
-
+        // Do nothing.
     }
 
     public void saveCostInFirebase() {
-
+        double priceForUnit;
+        try {
+            priceForUnit = Double.parseDouble(priceUnitCost.getText().toString());
+        } catch (NumberFormatException e) {
+            priceForUnit = 0; //default value
+        }
         String description = descriptionCost.getText().toString();
         int quantity = Integer.parseInt(quantityUnitsCost.getText().toString());
-        double priceForUnit = Double.parseDouble(priceUnitCost.getText().toString());
+        // Show error message if details is invalid
         if (description.equals("") || quantity == 0 || priceForUnit == 0) {
             //displaying toast - must enter the details
             Toast.makeText(this, "חובה להזין את הפרטים", Toast.LENGTH_SHORT).show();
@@ -136,7 +152,7 @@ public class AddCosts extends AppCompatActivity implements AdapterView.OnItemSel
             //Total sum - up to three decimal places
             double totalSum = Double.parseDouble(String.format("%.2f", priceForUnit * quantity));
             //Creating Cost object
-            final Cost cost = new Cost(description, priceForUnit, totalSum, quantity);
+            final Cost cost = new Cost(description, priceForUnit, selected, totalSum, quantity);
             //final Cost cost = new Cost(description,priceForUnit, priceForUnit*quantity,quantity);
 
 
@@ -153,6 +169,7 @@ public class AddCosts extends AppCompatActivity implements AdapterView.OnItemSel
 
     public void moveToCosts() {
         Intent i = new Intent(AddCosts.this, Costs.class);
+        i.putExtra("coins",selected);
         startActivity(i);
     }
 

@@ -4,12 +4,16 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import java.util.Random;
 
 /**
  * Created by User on 28/03/2017.
@@ -20,6 +24,9 @@ public class PriceArrayAdapter extends ArrayAdapter<PriceList> {
     private final Context context;
     private final PriceList[] values;
     private final ArrayAdapter adapter;
+    private Button colorRandView; // Random color swapping
+    private static final int NUM_OF_TILE_COLORS = 8; /////////New3
+
 
     public PriceArrayAdapter(Context context, PriceList[] values) {
         super(context, R.layout.row_price_item, values);
@@ -41,6 +48,13 @@ public class PriceArrayAdapter extends ArrayAdapter<PriceList> {
 
         ImageButton editPrice = (ImageButton) rowView.findViewById(R.id.btn_edit);
         ImageButton deletePrice = (ImageButton) rowView.findViewById(R.id.btn_delete);
+        colorRandView = (Button)rowView.findViewById(R.id.bColors); // init button color
+        //String[] colorArray = context.getResources().getStringArray(R.array.letter_tile_colors);
+
+        Random rnd = new Random();//Random color swapping
+        int color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256)); // get color
+        colorRandView.setBackgroundColor(color); // set random color every enter
+
 
         textNameProduct.setText(values[position].getProductName());
         textMinQuantity.setText("כמות מינמלית: " + values[position].getqMin());

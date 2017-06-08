@@ -43,5 +43,16 @@
 
     </style>
 
+    <!--cost-->
+    <style name="TitleConText" parent="AppTheme">
+        <item name="android:textColor">@color/titleBadgeText</item>
+        <item name="android:textSize">20dp</item>
+    </style>
+    <style name="TitleConTitle" parent="AppTheme">
+        <item name="android:textColor">@color/titleBadgeTitle</item>
+        <item name="android:textSize">12dp</item>
+    </style>
+
+
 
 </resources>

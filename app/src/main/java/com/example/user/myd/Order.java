@@ -14,6 +14,8 @@ public class Order {
     private int qUnitsOrder; // quantity units that order
     private String dateOrder;
 
+    private String selectedSupplier; // for the spinner
+
     //Firebase needs a key property
     private String key;
 
@@ -24,11 +26,12 @@ public class Order {
         //Needed for serialization
     }
 
-    public Order(String orderDesc, int qUnitsOrder, String dateOrder)
+    public Order(String orderDesc, int qUnitsOrder, String dateOrder, String selectedSupplier)
     {
         this.orderDesc = orderDesc;
         this.qUnitsOrder = qUnitsOrder;
         this.dateOrder = dateOrder;
+        this.selectedSupplier = selectedSupplier;
     }
 
     public String getOrderDesc() {
@@ -53,6 +56,10 @@ public class Order {
 
     public void setDateOrder(String dateOrder) {
         this.dateOrder = dateOrder;
+    }
+
+    public String getSelectedSupplier() {
+        return selectedSupplier;
     }
 
     @Exclude
