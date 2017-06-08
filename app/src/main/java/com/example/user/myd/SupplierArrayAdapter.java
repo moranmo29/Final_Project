@@ -119,6 +119,30 @@ public class SupplierArrayAdapter extends ArrayAdapter<Supplier> {
             }
         });
 
+        //user can delete supplier from the list
+        deleteSupplier.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                new AlertDialog.Builder(view.getContext())
+                        .setTitle(R.string.delete_title)
+                        .setMessage(R.string.delete_message)
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // continue with delete
+                                //String supplierId = mDatabase.child("users").child(mUserId).child("Supplier").child(SupplierArrayAdapter.getItem(position).getRefKey());
+                                FirebaseDbHandler.mDatabase.child("users").child(FirebaseDbHandler.mUserId).child("Supplier").child(values[position].getKey()).removeValue();
+                                //Log.e("Key Value ", "" + values[position].getKey());
+                            }
+                        })
+                        .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // do nothing
+                            }
+                        })
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show();
+            }
+        });
+
         //user can edit supplier from the list
         editSupplier.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {

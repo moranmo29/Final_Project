@@ -69,12 +69,21 @@ public class AddSupplier extends AppCompatActivity implements AdapterView.OnItem
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     Supplier supplier = dataSnapshot.getValue(Supplier.class);
-                    nameSupplier.setText(supplier.getName());
-                    phoneNumberSup.setText(supplier.getPhoneNumber());
-                    addressSupplier.setText(supplier.getAddress());
-                    companySupplier.setText(supplier.getCompany());
-                    emailSupplier.setText(supplier.getEmail());
-                    commentsSupplier.setText(supplier.getComments());
+                    try {
+                        nameSupplier.setText(supplier.getName());
+                        phoneNumberSup.setText(supplier.getPhoneNumber());
+                        addressSupplier.setText(supplier.getAddress());
+                        companySupplier.setText(supplier.getCompany());
+                        emailSupplier.setText(supplier.getEmail());
+                        commentsSupplier.setText(supplier.getComments());
+                    }
+                    catch(NullPointerException e){
+                        runOnUiThread(new Runnable(){
+                            public void run(){
+                                //Toast.makeText(getBaseContext(),"Deleted",Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
                 }
 
                 @Override

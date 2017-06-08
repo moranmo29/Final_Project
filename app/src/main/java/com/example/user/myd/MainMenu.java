@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import java.util.ArrayList;
 import android.content.Context;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -14,6 +15,8 @@ import android.widget.GridView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.liuguangqiang.cookie.CookieBar;
+import com.liuguangqiang.cookie.OnActionClickListener;
 
 public class MainMenu extends AppCompatActivity {
 
@@ -75,7 +78,7 @@ public class MainMenu extends AppCompatActivity {
                         startActivity(i);
                         break;
                     case 8:
-                        signOut();
+                        popUpExit();
                         break;
                 }
             }
@@ -131,5 +134,22 @@ public class MainMenu extends AppCompatActivity {
     public void signOut() {
         auth.signOut();
         startActivity(new Intent(this, LoginActivity.class));
+    }
+
+    //Popup message to sign-out from the app
+    private void popUpExit() {
+        new CookieBar.Builder(MainMenu.this)
+                .setTitle(R.string.messege_titleExit)
+                .setIcon(R.mipmap.ic_launcher)
+                .setLayoutGravity(Gravity.BOTTOM)
+                .setMessage(R.string.messege_body)
+                .setBackgroundColor(R.color.colorRed)
+                .setAction(R.string.messege_confirm, new OnActionClickListener() {
+                    @Override
+                    public void onClick() {
+                        signOut();
+                    }
+                })
+                .show();
     }
 }

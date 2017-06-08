@@ -15,6 +15,8 @@
     <string name="error_password_short">הסיסמא קצרה מדי (מינימום 6 תווים)</string>
     <string name="auth_failed">האימות נכשל! בדוק את נכונות האימייל והסיסמא, או האם הינך משתמש רשום</string>
     <string name="connection_failed">בדוק את החיבור לאינטרנט</string>
+    <string name="messege_title">\u0020\u0020ברוכים הבאים</string>
+    <string name="messege_success">\u0020\u0020הכניסה בוצעה בהצלחה</string>
 
     <!--General-->
     <string name="delete_title">מחק פריט</string>
@@ -43,6 +45,9 @@
     <string name="action_about">אודות</string>
     <string name="action_logoff">יציאה</string>
     <string name="btn_back"><![CDATA[ חזור]]></string>
+    <string name="messege_titleExit">\u0020\u0020התנתקות</string>
+    <string name="messege_body">\u0020\u0020להתנתקות- לחץ על אישור</string>
+    <string name="messege_confirm">אישור</string>
 
     <!--Setting Activity-->
     <string name="new_setting_title">הגדרות</string>
