@@ -39,9 +39,9 @@
         android:weightSum="1">
 
         <TextView
-            android:layout_width="173dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:gravity="center"
             android:layout_marginTop="80dp"
             android:ems="10"
             android:text="@string/to_do_task"
@@ -117,8 +117,8 @@
 
                 <ImageView
                     android:id="@+id/iv_high"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:src="@drawable/icon_high_priority" />
 
                 <TextView
@@ -137,8 +137,8 @@
 
                 <ImageView
                     android:id="@+id/iv_medium"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:src="@drawable/icon_medium_priority" />
 
                 <TextView
@@ -156,8 +156,8 @@
 
                 <ImageView
                     android:id="@+id/iv_low"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:gravity="center"
                     android:src="@drawable/icon_low_priority" />
 

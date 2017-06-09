@@ -9,6 +9,7 @@
     tools:context="com.example.user.myd.ToDo">
 
     <LinearLayout
+        android:id="@+id/linearLayout4"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_centerHorizontal="true"
@@ -56,6 +57,7 @@
             android:layout_height="304dp"
             android:layout_above="@+id/add_order_btn"
             android:layout_below="@+id/imageView2"
+            android:layout_marginTop="42dp"
             android:layout_weight="0.17"
             android:background="#FFFFFF"
             android:divider="#FFFFFF"
@@ -85,6 +87,20 @@
         android:background="@color/colorGray"
         android:scaleType="fitXY"
         app:srcCompat="@drawable/home_circle" />
+
+    <SearchView
+        android:id="@+id/searchToDo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout4"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="34dp"
+        android:iconifiedByDefault="false"
+        android:queryHint="@string/search_task">
+
+        <requestFocus />
+    </SearchView>
 
 
 </RelativeLayout>

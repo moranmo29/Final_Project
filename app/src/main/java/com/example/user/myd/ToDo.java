@@ -7,17 +7,22 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.SearchView;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 public class ToDo extends AppCompatActivity {
 
     ImageButton home, addTask;
     private ItemToDo[] tasks;
     private ListView listView;
+    private SearchView searchTodo;
+    private ToDoArrayAdapter adapterTodo; ///for the searchview
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +33,43 @@ public class ToDo extends AppCompatActivity {
         home = (ImageButton)findViewById(R.id.home_btnToDo);
         addTask = (ImageButton)findViewById(R.id.btn_add_task);
         listView = (ListView)findViewById(R.id.lv_todo);
+        searchTodo = (SearchView) findViewById(R.id.searchToDo);
+
+        //----------------------------- search todo -------------------------------
+        //*** setOnQueryTextFocusChangeListener ***
+        searchTodo.setOnQueryTextFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                // TODO Auto-generated method stub
+            }
+        });
+
+        //*** setOnQueryTextListener ***
+        searchTodo.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                // TODO Auto-generated method stub
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                // TODO Auto-generated method stub
+                newText = newText.toLowerCase(); // the text that the user insert
+                ArrayList<ItemToDo> newList = new ArrayList<>();
+                for (ItemToDo todo : tasks) {
+                    String nameTask = todo.getTitle().toLowerCase(); // search task by description
+                    if (nameTask.contains(newText)) {
+                        newList.add(todo);
+                    }
+                }
+                ItemToDo[] todoArray = newList.toArray(new ItemToDo[newList.size()]);
+                adapterTodo = new ToDoArrayAdapter(getBaseContext(), todoArray);
+                listView.setAdapter(adapterTodo);
+                return true;
+            }
+        });
+        //---------------------------------------- End Search ---------------------------------------------
 
         //Retrieve values from firebase
         FirebaseDbHandler.mDatabase.child("users").child(FirebaseDbHandler.mUserId).child("ToDo").addListenerForSingleValueEvent(new ValueEventListener() {

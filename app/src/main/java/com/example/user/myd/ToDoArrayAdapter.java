@@ -1,6 +1,7 @@
 package com.example.user.myd;
 
 import android.content.Context;
+import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,10 +35,10 @@ public class ToDoArrayAdapter extends ArrayAdapter<ItemToDo> {
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rowView = inflater.inflate(R.layout.row_todo_item, parent, false);
-        TextView textDescriptionTodo = (TextView) rowView.findViewById(R.id.tv_toDoDescription);
         TextView textPriorityToDo = (TextView) rowView.findViewById(R.id.toDoPr);
         Button toDoPriority = (Button) rowView.findViewById(R.id.toDoPr); //
-        CheckBox deleteToDo = (CheckBox) rowView.findViewById(R.id.checkBoxTodo);
+        final TextView textDescriptionTodo = (TextView) rowView.findViewById(R.id.tv_toDoDescription);
+        final CheckBox deleteToDo = (CheckBox) rowView.findViewById(R.id.checkBoxTodo);
 
         textDescriptionTodo.setText(values[position].getTitle());
 
@@ -62,9 +63,12 @@ public class ToDoArrayAdapter extends ArrayAdapter<ItemToDo> {
             public void onCheckedChanged(CompoundButton buttonView,
                                          boolean isChecked) {
                 if (isChecked) {
+                    textDescriptionTodo.setPaintFlags(textDescriptionTodo.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG); //add strikethrough on item
                     FirebaseDbHandler.mDatabase.child("users").child(FirebaseDbHandler.mUserId).child("ToDo").child(values[position].getKey()).removeValue();
                 } else {
                     //ToDo
+                    //delete strikethrough
+                   // textDescriptionTodo.setPaintFlags(textDescriptionTodo.getPaintFlags() & ~Paint.STRIKE_THRU_TEXT_FLAG);
                 }
             }
         });

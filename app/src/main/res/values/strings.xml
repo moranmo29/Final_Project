@@ -174,18 +174,19 @@
     <string name="shops_title">חנויות</string>
 
     <string name="new_shop_title">הוספת חנות</string>
+    <string name="search_shop">חפש חנות</string>
     <string name="shop_name">שם החנות</string>
     <string name="shop_address">כתובת החנות</string>
     <string name="shop_contact_man">איש קשר</string>
     <string name="shop_phone_number">מספר טלפון</string>
     <string name="shop_email">דואר אלקטרוני</string>
-    <string name="quantity_sold_shop">כמות נמכרת</string>
+    <string name="quantity_sold_shop">נמכרו</string>
     <string name="shop_share">שתף</string>
     <string name="dail_number">חייג למספר</string>
 
     <!--To-Do Activity-->
     <string name="to_do_title">טיפולים</string>
-
+    <string name="search_task">חפש משימה</string>
     <string name="new_task_title">הוספת משימה</string>
     <string name="to_do_task">מה ברצונך לעשות?</string>
     <string name="todo_proirity">בחר עדיפות:</string>

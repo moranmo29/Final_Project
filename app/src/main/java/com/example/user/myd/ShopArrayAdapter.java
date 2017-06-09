@@ -16,6 +16,7 @@ import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -60,6 +61,7 @@ public class ShopArrayAdapter extends ArrayAdapter<Shop> {
         Button deleteShop = (Button)rowView.findViewById(R.id.btnDelete);
         Button shareShop =(Button)rowView.findViewById(R.id.btnShare);
         Button dialNumber = (Button)rowView.findViewById(R.id.btnDialing);
+
         // set the color of the button dial
         dialNumber.setBackgroundColor(ContextCompat.getColor(context, R.color.colorGreen));
         //set background drawable of a view, shape dial number button
@@ -69,7 +71,7 @@ public class ShopArrayAdapter extends ArrayAdapter<Shop> {
         textContactManShop.setText("איש קשר: " + values[position].getContactMan());
         textAddressShop.setText("כתובת: " + values[position].getShopAddress()); //.substring(0,3) + "..."
         textEmailShop.setText(values[position].getShopEmail());
-        textQuantityShop.setText(values[position].getqSold()+" נמכרו");
+        textQuantityShop.setText(""+values[position].getqSold());
         textPhoneShop.setText(values[position].getShopNumberPhone());
 
         //user can share store with his contacts

@@ -9,6 +9,7 @@
     tools:context="com.example.user.myd.Shops">
 
     <LinearLayout
+        android:id="@+id/linearLayout4"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_centerHorizontal="true"
@@ -53,10 +54,11 @@
         <ListView
             android:id="@+id/lv_shops"
             android:layout_width="match_parent"
-            android:layout_height="304dp"
+            android:layout_height="300dp"
             android:layout_above="@+id/addShopButton"
             android:layout_below="@+id/imageShops"
             android:layout_weight="0.17"
+            android:layout_marginTop="42dp"
             android:background="#FFFFFF"
             android:divider="#FFFFFF"
             android:dividerHeight="10dp" />
@@ -85,5 +87,18 @@
         android:background="@color/colorGray"
         android:scaleType="fitXY"
         app:srcCompat="@drawable/home_circle" />
+
+    <SearchView
+        android:id="@+id/searchShop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout4"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="34dp"
+        android:iconifiedByDefault="false"
+        android:queryHint="@string/search_shop">
+        <requestFocus />
+    </SearchView>
 
 </RelativeLayout>
