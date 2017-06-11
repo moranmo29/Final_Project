@@ -9,6 +9,7 @@
     tools:context="com.example.user.myd.Price">
 
     <LinearLayout
+        android:id="@+id/linearLayoutPrice"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_centerHorizontal="true"
@@ -53,9 +54,10 @@
         <ListView
             android:id="@+id/lv_price"
             android:layout_width="match_parent"
-            android:layout_height="304dp"
+            android:layout_height="300dp"
             android:layout_above="@+id/btn_add_price"
             android:layout_below="@+id/image_price"
+            android:layout_marginTop="40dp"
             android:layout_weight="0.17"
             android:background="#FFFFFF"
             android:divider="#FFFFFF"
@@ -87,5 +89,18 @@
         android:scaleType="fitXY"
         app:srcCompat="@drawable/home_circle" />
 
+    <SearchView
+        android:id="@+id/searchPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayoutPrice"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="34dp"
+        android:iconifiedByDefault="false"
+        android:queryHint="@string/search_price">
+
+        <requestFocus />
+    </SearchView>
 </RelativeLayout>
 

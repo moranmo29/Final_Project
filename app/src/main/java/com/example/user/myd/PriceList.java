@@ -9,7 +9,9 @@ import com.google.firebase.database.Exclude;
 public class PriceList {
 
     // Declare variables
-    private String productName, priceComments;
+    private String productName;
+    private String unitCoinPrice;
+    private String priceComments;
     private int qMin;
     private double priceUnit;
     private String key; //Firebase needs a key property
@@ -20,11 +22,12 @@ public class PriceList {
         //Needed for serialization
     }
 
-    public PriceList(String productName,int qMin, double priceUnit,  String priceComments)
+    public PriceList(String productName,int qMin, double priceUnit, String unitCoinPrice, String priceComments)
     {
         this.productName = productName;
         this.qMin = qMin;
         this.priceUnit = priceUnit;
+        this.unitCoinPrice = unitCoinPrice;
         this.priceComments = priceComments;
     }
 
@@ -60,6 +63,10 @@ public class PriceList {
 
     public void setPriceUnit(double priceUnit) {
         this.priceUnit = priceUnit;
+    }
+
+    public String getUnitCoinPrice() {
+        return unitCoinPrice;
     }
 
     @Exclude

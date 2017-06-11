@@ -56,10 +56,10 @@ public class PriceArrayAdapter extends ArrayAdapter<PriceList> {
         colorRandView.setBackgroundColor(color); // set random color every enter
 
 
-        textNameProduct.setText(values[position].getProductName());
+        textNameProduct.setText(""+values[position].getProductName());
         textMinQuantity.setText("כמות מינמלית: " + values[position].getqMin());
         textComment.setText("הערה: " + values[position].getPriceComments());
-        textPriceUnit.setText(""+values[position].getPriceUnit());
+        textPriceUnit.setText(""+values[position].getUnitCoinPrice()+""+values[position].getPriceUnit());
 
         //user can delete price from the list
         deletePrice.setOnClickListener(new View.OnClickListener() {

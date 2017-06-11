@@ -7,17 +7,23 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.SearchView;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 public class Barcode extends AppCompatActivity {
 
     ImageButton home, addBarcode;
     private BarcodeNumber[] barcodes;
     private ListView listView;
+    private SearchView searchView;
+    private BarcodeArrayAdapter adapterBarcode; ///for the searchview
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +31,45 @@ public class Barcode extends AppCompatActivity {
         setContentView(R.layout.activity_barcode);
 
         listView = (ListView) findViewById(R.id.lv_barcode);
+        searchView = (SearchView) findViewById(R.id.searchBarcode);
+
+        //----------------------------- search barcode -------------------------------
+        //*** setOnQueryTextFocusChangeListener ***
+        searchView.setOnQueryTextFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                // TODO Auto-generated method stub
+            }
+        });
+
+        //*** setOnQueryTextListener ***
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                // TODO Auto-generated method stub
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                // TODO Auto-generated method stub
+                newText = newText.toLowerCase(); // the text that the user insert
+                ArrayList<BarcodeNumber> newList = new ArrayList<>();
+                for (BarcodeNumber barcodeNum : barcodes) {
+                    String descriptionBarcode = barcodeNum.getBarcodeDesc().toLowerCase(); // search barcode by description
+                    String number = barcodeNum.getBarcodeNum().toLowerCase(); // search barcode by barcode number
+                    if (descriptionBarcode.contains(newText) || number.contains(newText)) {
+                        newList.add(barcodeNum);
+                    }
+                }
+                BarcodeNumber[] barcodeNumbersArray = newList.toArray(new BarcodeNumber[newList.size()]);
+                adapterBarcode = new BarcodeArrayAdapter(getBaseContext(), barcodeNumbersArray);
+                listView.setAdapter(adapterBarcode);
+                return true;
+            }
+        });
+        //---------------------------------------- End Search ---------------------------------------------
 
         //Retrieve values from firebase
         FirebaseDbHandler.mDatabase.child("users").child(FirebaseDbHandler.mUserId).child("Barcode").addListenerForSingleValueEvent(new ValueEventListener() {

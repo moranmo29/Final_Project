@@ -199,7 +199,7 @@
 
     <!--Barcode Activity-->
     <string name="barcode_title">ברקוד</string>
-
+    <string name="search_barcode">חפש ברקוד</string>
     <string name="new_barcode_title">הקצאת מספר ברקוד</string>
     <string name="barcode_number">סרוק או ערוך מספר ברקוד</string>
     <string name="bracode_product_name">שם המוצר</string>
@@ -211,16 +211,16 @@
 
     <!--Price Activity-->
     <string name="price_title">מחירון</string>
-
+    <string name="search_price">חפש מחירון</string>
     <string name="add_price_title">עריכת מחירון</string>
     <string name="price_product_name">שם המוצר</string>
     <string name="price_for_unit">מחיר ליחידה</string>
     <string name="price_type_coin">סוג מטבע</string>
     <string-array name="priceTypeCoinSpinner">
-        <item>שקל</item>
-        <item>דולר</item>
-        <item>יורו</item>
-        <item>אחר</item>
+        <item>₪</item>
+        <item>$</item>
+        <item>€</item>
+        <item> </item>
     </string-array>
     <string name="min_quantity_unit">כמות מינימלית</string>
     <string name="price_comments">הערות</string>

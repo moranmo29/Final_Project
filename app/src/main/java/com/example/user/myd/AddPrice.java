@@ -14,14 +14,22 @@ import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AddPrice extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     Spinner priceTypeCoin;
     Button priceCancelBtn, saveBtn, btnPlus, btnMinus;
-    EditText nameProduct, minQuantity, priceForUnit, pComments;
+    EditText minQuantity, priceForUnit, pComments;
     private String isKeyPrice;
+    //for spinner
+    private Spinner productNameList;
+    private List<String> nameProducts;
+    String selectedProductName, selectedCoinType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,13 +37,55 @@ public class AddPrice extends AppCompatActivity implements AdapterView.OnItemSel
         setContentView(R.layout.activity_add_price);
 
         //init view
-        nameProduct = (EditText) findViewById(R.id.add_product_name);
         minQuantity = (EditText) findViewById(R.id.priceMinimumQuantity);
         priceForUnit = (EditText) findViewById(R.id.addPriceCost);
         pComments = (EditText) findViewById(R.id.priceComments);
         saveBtn = (Button) findViewById(R.id.save_btn);
         btnPlus = (Button) findViewById(R.id.button_plus);
         btnMinus = (Button) findViewById(R.id.button_minus);
+
+        productNameList = (Spinner)findViewById(R.id.spinnerProductName);
+        nameProducts= new ArrayList<>();// for spinner
+
+        // Displays the product name list at Spinner - in Price activity
+        DatabaseReference ref = FirebaseDbHandler.mDatabase.child("users").child(FirebaseDbHandler.mUserId).child("Barcode");
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                nameProducts.add("שם מוצר"); // add title to the spinner
+                for(DataSnapshot singleSnapshot : dataSnapshot.getChildren()){
+                    //Getting the names of all products name that exist in barcode screen
+                    nameProducts.add(singleSnapshot.getValue(BarcodeNumber.class).getBarcodeDesc());
+                }
+
+                //Displays the list of supplier in Spinner - the adapter will put data inside the spinner
+                ArrayAdapter<String> adp1=new ArrayAdapter<String>(getBaseContext(),
+                        android.R.layout.simple_list_item_1,nameProducts);
+                adp1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                productNameList.setAdapter(adp1);
+                //Get the selected text in Spinner via position
+                productNameList.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        selectedProductName = parent.getItemAtPosition(position).toString().trim();
+                        //If user choose the spinner title, insert an empty string
+                        if (selectedProductName == parent.getItemAtPosition(0).toString().trim())
+                        {
+                            selectedProductName = "";
+                        }
+                    }
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                });
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
         isKeyPrice = getIntent().getStringExtra("EXTRA_KEY_ID");
         if (isKeyPrice != null) {
@@ -45,7 +95,6 @@ public class AddPrice extends AppCompatActivity implements AdapterView.OnItemSel
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     PriceList price = dataSnapshot.getValue(PriceList.class);
                     try {
-                        nameProduct.setText(price.getProductName());
                         minQuantity.setText("" + price.getqMin());
                         priceForUnit.setText("" + price.getPriceUnit());
                         pComments.setText(price.getPriceComments());
@@ -72,7 +121,7 @@ public class AddPrice extends AppCompatActivity implements AdapterView.OnItemSel
         android.R.layout.simple_spinner_item contain a TextView that is repeated to form the List structure  */
         ArrayAdapter adapterTypeCoin = ArrayAdapter.createFromResource(this, R.array.priceTypeCoinSpinner, android.R.layout.simple_spinner_item);
 
-
+        //Spinner TypeCoin
         priceTypeCoin.setAdapter(adapterTypeCoin);
         priceTypeCoin.setOnItemSelectedListener(this);
 
@@ -105,10 +154,10 @@ public class AddPrice extends AppCompatActivity implements AdapterView.OnItemSel
 
     }
 
+
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        //TextView myText = (TextView) view;
-        //Toast.makeText(this, "you selected:" + myText.getText().toString(), Toast.LENGTH_SHORT).show();
+        selectedCoinType = adapterView.getItemAtPosition(i).toString().trim();
     }
 
     @Override
@@ -117,16 +166,16 @@ public class AddPrice extends AppCompatActivity implements AdapterView.OnItemSel
     }
 
     public void savePriceInFirebase() {
-        String name = nameProduct.getText().toString().trim();
+        String pName = selectedProductName.toString().trim(); //
         int quantityMin = Integer.parseInt(minQuantity.getText().toString().trim());
         double priceUnit = Double.parseDouble(priceForUnit.getText().toString().trim());
-        if (name.equals("") || priceUnit < 0 || quantityMin <= 0) {
+        if (pName.equals("שם מוצר") || priceUnit < 0 || quantityMin <= 0) {
             Toast.makeText(this, "חובה להזין פרטים", Toast.LENGTH_SHORT).show();
         } else {
             String comment = pComments.getText().toString().trim();
 
             //Creating Price object
-            final PriceList price = new PriceList(name, quantityMin, priceUnit, comment);
+            final PriceList price = new PriceList(pName, quantityMin, priceUnit, selectedCoinType, comment);
 
             if (isKeyPrice == null) {
                 //Storing values to firebase
@@ -141,6 +190,7 @@ public class AddPrice extends AppCompatActivity implements AdapterView.OnItemSel
 
     public void moveToPrice() {
         Intent i = new Intent(AddPrice.this, Price.class);
+        i.putExtra("coins",selectedCoinType);
         startActivity(i);
     }
 

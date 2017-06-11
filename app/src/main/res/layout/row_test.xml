@@ -1,116 +1,199 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_add_price_check"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@drawable/rounded_border_square"
-    android:baselineAligned="false"
-    android:orientation="horizontal">
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context="com.example.user.myd.AddPriceCheck">
 
-    <!-- LEFT TITLE PART -->
-    <RelativeLayout
-        android:layout_width="150dp"
-        android:layout_height="108dp"
-        android:layout_weight="3"
-        android:background="@null"
-        android:gravity="center_horizontal"
-        android:orientation="vertical">
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_centerHorizontal="true"
+        android:background="@color/colorGray"
+        android:orientation="vertical"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/addPriceCheckText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="19dp"
+        android:padding="15dp"
+        android:text="@string/add_price_check_title"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="28sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/addPriceCheckText"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <EditText
+            android:id="@+id/add_total_cost_product"
+            android:layout_width="285px"
+            android:layout_height="285px"
+            android:layout_weight="0.14"
+            android:background="#ff7fe5"
+            android:ems="10"
+            android:hint="@string/price_total_cost_product"
+            android:inputType="numberDecimal"
+            android:maxLines="1"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF" />
+
+        <LinearLayout
+            android:layout_width="285px"
+            android:layout_height="285px"
+            android:background="#4bc2ff"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/addPriceCostToCustomer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/price_for_unit_customer"
+                android:inputType="numberDecimal"
+                android:textAlignment="center"
+                android:textColor="#000000" />
+
+            <Spinner
+                android:id="@+id/price_unit_spinner"
+                android:layout_width="85dp"
+                android:layout_height="55px"
+                android:layout_gravity="center"
+                android:background="@drawable/gradient_spinner"
+                android:gravity="center_vertical"
+                android:textAlignment="center" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/TakeQuantityUnit"
+        android:layout_width="97dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:text="@string/sold_quantity_unit"
+        android:textSize="16sp" />
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="0.1"
+        android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btnShare"
-            android:layout_width="50dp"
-            android:layout_height="40dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:background="@null"
-            android:drawableTop="@drawable/icon_share_42"
-            android:padding="10dp"
-            android:text="@string/shop_share"
-            android:scaleType="fitXY"/>
+            android:id="@+id/button_plus"
+            android:layout_width="@dimen/circle_size_small"
+            android:layout_height="@dimen/circle_size_small"
+            android:background="@drawable/button_plus_minus"
+            android:text="@string/plus_counter" />
 
 
-        <ImageButton
-            android:id="@+id/btn_delete"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@drawable/icon_del_order"
-            android:scaleType="fitXY"
-            android:layout_centerVertical="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+        <EditText
+            android:id="@+id/priceMinimumQuantity"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:inputType="number"
+            android:text="@string/init_zero_value"></EditText>
 
         <Button
-            android:id="@+id/alertImg"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:background="@drawable/icon_alarm_order"
-            android:scaleType="fitXY" />
+            android:id="@+id/button_minus"
+            android:layout_width="@dimen/circle_size_small"
+            android:layout_height="@dimen/circle_size_small"
+            android:background="@drawable/button_plus_minus"
+            android:text="@string/minus_counter" />
 
-    </RelativeLayout>
-    <!-- RIGHT TITLE PART -->
+    </LinearLayout>
+
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:background="@drawable/rounded_border_square"
-        android:paddingBottom="1dp"
-        android:paddingEnd="1dp"
-        android:paddingLeft="1dp"
-        android:paddingRight="1dp"
-        android:paddingStart="1dp"
-        android:paddingTop="1dp">
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="0.37">
 
-        <TextView
-            android:id="@+id/tv_orderQuan"
-            style="@style/TitleConText"
+        <Button
+            android:id="@+id/add_price_check_btn"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:text="@string/order_quan"
-            android:textColor="#3F51B5"
-            android:textSize="14sp"
-            android:textStyle="bold"/>
+            android:layout_height="@dimen/height_btn"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/buttonshape"
+            android:backgroundTint="@color/colorLightGreen"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:text="@string/check_btn"
+            android:textColor="#000000" />
 
-        <TextView
-            style="@style/TitleConTitle"
-            android:id="@+id/tv_orderDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_below="@id/tv_orderDescription"
-            android:layout_marginTop="10dp"
-            android:text="תאריך הזמנה"
-            android:textColor="#000000"
-            android:textSize="14sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/tv_orderDescription"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:ellipsize="marquee"
-            android:fadingEdge="horizontal"
-            android:background="#9FA8DA"
-            android:padding="2dp"
-            android:maxLines="1"
-            android:text="@string/description_order"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
-        <ImageView
-            android:id="@+id/title_from_to_dots_divider"
-            android:layout_width="match_parent"
-            android:layout_height="5dp"
-            android:layout_below="@id/tv_orderDescription"
-            android:layout_marginBottom="5dp"
-            android:src="@color/contentDividerLine" />
 
     </RelativeLayout>
-</LinearLayout>
+
+<ImageButton
+android:id="@+id/information_btn"
+android:layout_width="@dimen/inf_icon"
+android:layout_height="@dimen/inf_icon"
+android:layout_alignParentLeft="true"
+android:layout_alignParentStart="true"
+android:layout_alignParentTop="true"
+android:layout_marginLeft="12dp"
+android:layout_marginStart="12dp"
+android:layout_marginTop="12dp"
+android:background="@color/colorGray"
+android:scaleType="fitXY"
+app:srcCompat="@drawable/infor" />
+
+<RelativeLayout
+android:layout_width="match_parent"
+android:layout_height="100dp"
+android:layout_alignParentLeft="true"
+android:layout_alignParentStart="true"
+android:layout_alignParentTop="true"
+android:layout_marginTop="500dp">
+
+<Button
+    android:id="@+id/back_btn"
+    android:layout_width="wrap_content"
+    android:layout_height="@dimen/height_btn"
+    android:layout_alignParentTop="true"
+    android:layout_centerHorizontal="true"
+    android:background="@drawable/buttonshape"
+    android:backgroundTint="@color/colorGreen"
+    android:paddingLeft="50dp"
+    android:paddingRight="50dp"
+    android:text="@string/return_btn"
+    android:textColor="#FFFFFF" />
+</RelativeLayout>
+
+<LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical"
+android:gravity="center"
+android:layout_marginTop="400dp">
+<TextView
+    android:id="@+id/info"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textSize="18sp"
+    android:textColor="#000000" />
+</LinearLayout></RelativeLayout>
