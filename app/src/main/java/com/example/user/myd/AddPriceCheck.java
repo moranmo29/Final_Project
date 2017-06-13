@@ -12,9 +12,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class AddPriceCheck extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class AddPriceCheck extends AppCompatActivity {
 
     Spinner priceTypeCoin;
+    String txtCoin;
     Button backBtn, checkBtn, btnPlus, btnMinus;;
     EditText totalCostUnit, customerPrice, quantity;
     TextView info;
@@ -42,7 +43,6 @@ public class AddPriceCheck extends AppCompatActivity implements AdapterView.OnIt
 
 
         priceTypeCoin.setAdapter(adapterTypeCoin);
-        priceTypeCoin.setOnItemSelectedListener(this);
 
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,7 +75,8 @@ public class AddPriceCheck extends AppCompatActivity implements AdapterView.OnIt
                 }
                 //Creating PriceCheck object
                 //final PriceCheck p = new PriceCheck(unit, priceCustomer, quantityPur);
-                info.setText("הרווח שלך מהעסקה: " + "\n" + calc);
+                txtCoin = priceTypeCoin.getSelectedItem().toString();
+                info.setText("הרווח שלך מהעסקה: " + "\n" + txtCoin + calc);
             }
         });
 
@@ -92,17 +93,6 @@ public class AddPriceCheck extends AppCompatActivity implements AdapterView.OnIt
                 minusQuantityClicked();
             }
         });
-    }
-
-    @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        // TextView myText = (TextView) view;
-        // Toast.makeText(this, "you selected:" + myText.getText(), Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-
     }
 
     public void moveToMenu(){

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,11 +50,17 @@ public class PriceArrayAdapter extends ArrayAdapter<PriceList> {
         ImageButton editPrice = (ImageButton) rowView.findViewById(R.id.btn_edit);
         ImageButton deletePrice = (ImageButton) rowView.findViewById(R.id.btn_delete);
         colorRandView = (Button)rowView.findViewById(R.id.bColors); // init button color
-        //String[] colorArray = context.getResources().getStringArray(R.array.letter_tile_colors);
 
-        Random rnd = new Random();//Random color swapping
-        int color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256)); // get color
-        colorRandView.setBackgroundColor(color); // set random color every enter
+        //Random colors from array - for view
+        int[] bArrayColors = context.getResources().getIntArray(R.array.letter_tile_colors);
+        int generatedRandomColor = bArrayColors[new Random().nextInt(bArrayColors.length)];
+        //colorRandView.setBackgroundColor(generatedRandomColor); // Works if not use a special shape button
+
+        //set background drawable of a view, shape dial number button
+        colorRandView.setBackgroundResource(R.drawable.button_bar_price_shape);
+        //change the background color of the shape random
+        GradientDrawable bgShape = (GradientDrawable)colorRandView.getBackground();
+        bgShape.setColor(generatedRandomColor);
 
 
         textNameProduct.setText(""+values[position].getProductName());

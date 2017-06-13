@@ -44,8 +44,8 @@ public class AddPrice extends AppCompatActivity implements AdapterView.OnItemSel
         btnPlus = (Button) findViewById(R.id.button_plus);
         btnMinus = (Button) findViewById(R.id.button_minus);
 
-        productNameList = (Spinner)findViewById(R.id.spinnerProductName);
-        nameProducts= new ArrayList<>();// for spinner
+        productNameList = (Spinner) findViewById(R.id.spinnerProductName);
+        nameProducts = new ArrayList<>();// for spinner
 
         // Displays the product name list at Spinner - in Price activity
         DatabaseReference ref = FirebaseDbHandler.mDatabase.child("users").child(FirebaseDbHandler.mUserId).child("Barcode");
@@ -53,14 +53,14 @@ public class AddPrice extends AppCompatActivity implements AdapterView.OnItemSel
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 nameProducts.add("שם מוצר"); // add title to the spinner
-                for(DataSnapshot singleSnapshot : dataSnapshot.getChildren()){
+                for (DataSnapshot singleSnapshot : dataSnapshot.getChildren()) {
                     //Getting the names of all products name that exist in barcode screen
                     nameProducts.add(singleSnapshot.getValue(BarcodeNumber.class).getBarcodeDesc());
                 }
 
                 //Displays the list of supplier in Spinner - the adapter will put data inside the spinner
-                ArrayAdapter<String> adp1=new ArrayAdapter<String>(getBaseContext(),
-                        android.R.layout.simple_list_item_1,nameProducts);
+                ArrayAdapter<String> adp1 = new ArrayAdapter<String>(getBaseContext(),
+                        android.R.layout.simple_list_item_1, nameProducts);
                 adp1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 productNameList.setAdapter(adp1);
                 //Get the selected text in Spinner via position
@@ -69,11 +69,11 @@ public class AddPrice extends AppCompatActivity implements AdapterView.OnItemSel
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                         selectedProductName = parent.getItemAtPosition(position).toString().trim();
                         //If user choose the spinner title, insert an empty string
-                        if (selectedProductName == parent.getItemAtPosition(0).toString().trim())
-                        {
+                        if (selectedProductName == parent.getItemAtPosition(0).toString().trim()) {
                             selectedProductName = "";
                         }
                     }
+
                     @Override
                     public void onNothingSelected(AdapterView<?> parent) {
 
@@ -166,31 +166,34 @@ public class AddPrice extends AppCompatActivity implements AdapterView.OnItemSel
     }
 
     public void savePriceInFirebase() {
-        String pName = selectedProductName.toString().trim(); //
-        int quantityMin = Integer.parseInt(minQuantity.getText().toString().trim());
-        double priceUnit = Double.parseDouble(priceForUnit.getText().toString().trim());
-        if (pName.equals("שם מוצר") || priceUnit < 0 || quantityMin <= 0) {
-            Toast.makeText(this, "חובה להזין פרטים", Toast.LENGTH_SHORT).show();
-        } else {
-            String comment = pComments.getText().toString().trim();
-
-            //Creating Price object
-            final PriceList price = new PriceList(pName, quantityMin, priceUnit, selectedCoinType, comment);
-
-            if (isKeyPrice == null) {
-                //Storing values to firebase
-                FirebaseDbHandler.mDatabase.child("users").child(FirebaseDbHandler.mUserId).child("Price").push().setValue(price);
+        try {
+            int quantityMin = Integer.parseInt(minQuantity.getText().toString().trim());
+            double priceUnit = Double.parseDouble(priceForUnit.getText().toString().trim());
+            if (priceUnit < 0 || quantityMin <= 0) {
+                Toast.makeText(this, "חובה להזין פרטים", Toast.LENGTH_SHORT).show();
             } else {
-                //if user want edit details of supplier - save the data that he change
-                FirebaseDbHandler.mDatabase.child("users").child(FirebaseDbHandler.mUserId).child("Price").child(isKeyPrice).setValue(price);
+                String comment = pComments.getText().toString().trim();
+
+                //Creating Price object
+                final PriceList price = new PriceList(selectedProductName, quantityMin, priceUnit, selectedCoinType, comment);
+
+                if (isKeyPrice == null) {
+                    //Storing values to firebase
+                    FirebaseDbHandler.mDatabase.child("users").child(FirebaseDbHandler.mUserId).child("Price").push().setValue(price);
+                } else {
+                    //if user want edit details of supplier - save the data that he change
+                    FirebaseDbHandler.mDatabase.child("users").child(FirebaseDbHandler.mUserId).child("Price").child(isKeyPrice).setValue(price);
+                }
+                moveToPrice();
             }
-            moveToPrice();
+        } catch (NumberFormatException e) {
+            Toast.makeText(this, "חובה להזין פרטים", Toast.LENGTH_SHORT).show();
         }
     }
 
     public void moveToPrice() {
         Intent i = new Intent(AddPrice.this, Price.class);
-        i.putExtra("coins",selectedCoinType);
+        i.putExtra("coins", selectedCoinType);
         startActivity(i);
     }
 

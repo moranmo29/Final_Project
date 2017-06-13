@@ -81,7 +81,7 @@ public class Costs extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Log.e("Count ", "" + dataSnapshot.getChildrenCount());
-                costs = new Cost[(int)dataSnapshot.getChildrenCount()];
+                costs = new Cost[(int) dataSnapshot.getChildrenCount()];
                 int i = 0;
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     costs[i] = postSnapshot.getValue(Cost.class);
@@ -160,5 +160,4 @@ public class Costs extends AppCompatActivity {
         Intent i = new Intent(Costs.this, AddCosts.class);
         startActivity(i);
     }
-
 }

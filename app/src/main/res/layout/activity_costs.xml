@@ -43,8 +43,8 @@
             android:layout_height="300dp"
             android:layout_above="@+id/imageButton"
             android:layout_below="@+id/searchCost"
-            android:layout_weight="0.17"
             android:layout_marginTop="42dp"
+            android:layout_weight="0.17"
             android:background="#FFFFFF"
             android:divider="#FFFFFF"
             android:dividerHeight="10dp" />
@@ -99,6 +99,7 @@
         android:layout_marginTop="34dp"
         android:iconifiedByDefault="false"
         android:queryHint="@string/search_cost">
+
         <requestFocus />
     </SearchView>
 
