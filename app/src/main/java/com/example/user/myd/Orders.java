@@ -61,7 +61,8 @@ public class Orders extends AppCompatActivity {
                 ArrayList<Order> newList = new ArrayList<>();
                 for (Order ord : orders) {
                     String name = ord.getOrderDesc().toLowerCase(); // search order by description
-                    if (name.contains(newText)) {
+                    String sup = ord.getSelectedSupplier().toLowerCase();
+                    if (name.contains(newText) || sup.contains(newText)) {
                         newList.add(ord);
                     }
                 }

@@ -5,6 +5,6 @@ Product management and marketing application
 
 ## Screenshots:<br>
 
-<img src="/screenshots/Screenshot_2017_login_portrait.png" height="400"/><img src="/screenshots/Screenshot_2017_registration_portrait.png" height="400"/>
-<img src="/screenshots/Screenshot_2017_menu_portrait.png" height="400"/>
+<img src="https://github.com/moranmo29/Final_Project/blob/master/screenshots/all_screens_gif.gif" height="400"/>
+
 

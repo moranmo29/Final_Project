@@ -1,8 +1,13 @@
+/* Name: AddBarcode.java
+ * This class allows adding a barcode number by scanning or adding manually,
+ * product name and inventory quantity.
+ */
 package com.example.user.myd;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,13 +27,14 @@ import com.google.zxing.integration.android.IntentResult;
 
 public class AddBarcode extends AppCompatActivity {
 
-    Button cancelBarcodeBtn, saveBtn, btnPlus, btnMinus;
-    EditText descriptionBarcode, barcodeNum, quantity;
+    private final int MAX_VALUE_QUANTITY = 1000000000;
+    private Button saveBtn, cancelBarcodeBtn, btnPlus, btnMinus;
+    private EditText descriptionBarcode, barcodeNum, quantity;
     private String isKeyBarcode;
 
     //New!
     DatabaseReference productRef;
-    EditText serialNumberBarcode, productName, country;
+    EditText serialNumberBarcode, productName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -135,29 +141,33 @@ public class AddBarcode extends AppCompatActivity {
         }
     }
 
-    public void saveBarcodeInFirebase() {
-
-        String description = descriptionBarcode.getText().toString().trim();
-        String numBarcode = barcodeNum.getText().toString().trim();
-        int quantityBarcode = Integer.parseInt(quantity.getText().toString());
-        if (description.equals("") || numBarcode.equals("") | quantityBarcode < 0) {
-            //displaying toast - must enter the details
-            Toast.makeText(this, "חובה להזין את הפרטים", Toast.LENGTH_SHORT).show();
-        } else {
-            //Creating Cost object
-            final BarcodeNumber bar = new BarcodeNumber(description, numBarcode, quantityBarcode);
-            if (isKeyBarcode == null) {
-                //Storing values to firebase
-                FirebaseDbHandler.mDatabase.child("users").child(FirebaseDbHandler.mUserId).child("Barcode").push().setValue(bar);
+    private void saveBarcodeInFirebase() {
+        try {
+            String description = descriptionBarcode.getText().toString().trim();
+            String numBarcode = barcodeNum.getText().toString().trim();
+            int quantityBarcode = Integer.parseInt(quantity.getText().toString());
+            if (description.equals("") || numBarcode.equals("") | quantityBarcode < 0 || quantityBarcode > MAX_VALUE_QUANTITY) {
+                //displaying toast - must enter the details
+                Toast.makeText(this, "חובה להזין את הפרטים", Toast.LENGTH_SHORT).show();
             } else {
-                //if user want edit details of supplier - save the data that he change
-                FirebaseDbHandler.mDatabase.child("users").child(FirebaseDbHandler.mUserId).child("Barcode").child(isKeyBarcode).setValue(bar);
+                //Creating Cost object
+                final BarcodeNumber bar = new BarcodeNumber(description, numBarcode, quantityBarcode);
+                if (isKeyBarcode == null) {
+                    //Storing values to firebase
+                    FirebaseDbHandler.mDatabase.child("users").child(FirebaseDbHandler.mUserId).child("Barcode").push().setValue(bar);
+                } else {
+                    //if user want edit details of supplier - save the data that he change
+                    FirebaseDbHandler.mDatabase.child("users").child(FirebaseDbHandler.mUserId).child("Barcode").child(isKeyBarcode).setValue(bar);
+                }
+                moveToBarcodeScreen();
             }
-            moveToBarcodeScreen();
+        } catch (NumberFormatException ex) { // handle exception - user input wrong - empty quantity
+            //displaying toast - must enter the quantity
+            Toast.makeText(this, R.string.quantity_empty_exception, Toast.LENGTH_SHORT).show();
         }
     }
 
-    public void moveToBarcodeScreen() {
+    private void moveToBarcodeScreen() {
         Intent i = new Intent(AddBarcode.this, Barcode.class);
         startActivity(i);
     }
@@ -167,18 +177,28 @@ public class AddBarcode extends AppCompatActivity {
         String value = quantity.getText().toString();
         int finalValue = Integer.parseInt(value) + 1;
         quantity.setText("" + finalValue);
+        if (finalValue > MAX_VALUE_QUANTITY) {
+            Toast.makeText(getApplicationContext(), R.string.limit_value, Toast.LENGTH_LONG).show();
+        }
     }
 
     //Reduce one value from quantityUnits every time user press on 'minus button'
     private void minusQuantityClicked() {
-        String value = quantity.getText().toString();
-        int finalValue = Integer.parseInt(value) - 1;
-        //Value must be positive
-        if (finalValue <= 0) {
-            finalValue = 0;
-            Toast.makeText(getApplicationContext(), "הכמות חייבת להיות למעלה מאפס!", Toast.LENGTH_SHORT).show();
+        int defaultValue = 0;
+        try {
+            String value = quantity.getText().toString();
+            int finalValue = Integer.parseInt(value) - 1;
+            Log.d("src", "Decreasing value...");
+            //Value must be positive
+            if (finalValue <= 0) {
+                finalValue = 0;
+                Toast.makeText(getApplicationContext(), R.string.minimum_value, Toast.LENGTH_SHORT).show();
+            }
+            //Display the newly number
+            quantity.setText("" + finalValue);
+        } catch (NumberFormatException ex) {
+            //Number is not valid for this edit-text (empty)
+            quantity.setText("" + defaultValue);
         }
-        //Display the newly number
-        quantity.setText("" + finalValue);
     }
 }

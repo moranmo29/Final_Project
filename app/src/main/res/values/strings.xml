@@ -21,6 +21,8 @@
     <!--General-->
     <string name="delete_title">מחק פריט</string>
     <string name="delete_message">האם את/ה בטוח/ה שברצונך למחוק פריט זה?</string>
+    <string name="cancel_label">ביטול</string>
+    <string name="save_label">שמירה</string>
 
     <!--Registration Activity-->
     <string name="reg_text">רישום משתמש חדש</string>
@@ -108,7 +110,7 @@
     <string name="new_supplier_title">ספק חדש</string>
     <string name="sup_name">*שם ספק</string>
     <string name="sup_role">חברה/תפקיד</string>
-    <string name="sup_address">כתובת</string>
+    <string name="sup_address">שם רחוב, עיר</string>
     <string-array name="typeAddress">
         <item>בית</item>
         <item>עבודה</item>
@@ -133,8 +135,6 @@
         <item>אחר</item>
     </string-array>
     <string name="sup_comments">הערות</string>
-    <string name="cancel_btn">ביטול</string>
-    <string name="save_btn">שמירה</string>
     <string name="select_option">מה ברצונך לעשות?</string>
     <string name="title_call">חיוג לספק</string>
     <string name="msg_call">האם ברצונך להתקשר לספק זה?</string>
@@ -207,7 +207,10 @@
     <string name="barcode_num">מספר ברקוד</string>
     <string name="barcode_invite">להזמין</string>
     <string name="barcode_status">כמות זמינה</string>
-    <string name="barcode_check">מצב מלאי</string>
+    <string name="barcode_check">כמות מצב מלאי</string>
+    <string name="limit_value">לא ניתן להכניס מספר גבוה יותר</string>
+    <string name="quantity_empty_exception"> חובה להזין כמות חוקית</string>
+    <string name="minimum_value">הכמות חייבת להיות למעלה מאפס!</string>
 
     <!--Price Activity-->
     <string name="price_title">מחירון</string>

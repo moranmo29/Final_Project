@@ -150,7 +150,7 @@
             android:backgroundTint="@color/colorRed"
             android:paddingLeft="50dp"
             android:paddingRight="50dp"
-            android:text="@string/cancel_btn"
+            android:text="@string/cancel_label"
             android:textColor="#FFFFFF"
             tools:ignore="RelativeOverlap" />
 
@@ -167,7 +167,7 @@
             android:backgroundTint="@color/colorGreen"
             android:paddingLeft="50dp"
             android:paddingRight="50dp"
-            android:text="@string/save_btn"
+            android:text="@string/save_label"
             android:textColor="#FFFFFF" />
     </RelativeLayout>
 </RelativeLayout>
